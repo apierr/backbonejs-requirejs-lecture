@@ -3,7 +3,9 @@ hands-on-backbone-require-js
 
 ## Course Description
 
-This course, divided in three parts, deals with the development of MVC (Model-View-Controller) web applications, 
+This course, divided in three parts, deals with the development of 
+[MVC (Model-View-Controller)](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) 
+web applications, 
 using the [Backbone.js](http://backbonejs.org/) with its extension 
 [Backbone.Marionette](http://marionettejs.com/) and the 
 [Require.js](http://requirejs.org/) library.
