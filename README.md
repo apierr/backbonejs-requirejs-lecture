@@ -18,7 +18,7 @@ Events, Listener, Template and Rendering, we write our first *Backbone.js*
 application in order to put in practice the knowledge we acquired. 
 
 However, *Backbone.js* is not a complete framework, 
-because it leaves much of the application design, architecture and scalability to the developer, including memory management, view management and more. 
+because it leaves much of the application design, architecture and scalability to the developer.
 This is the reason why, 
 in the second part of the course, 
 we build a much more robust project with great separation of concerns between design and code, combining Backbone.js and its extension,  
@@ -27,5 +27,5 @@ we build a much more robust project with great separation of concerns between de
 In the third part of the course, we see in details how to use the library *Require.js* to write - in the javascript code - 
 a program organised in modules, each of them in a single file,
 with dependent variables which do not pollute the global scope.
-
-Then, we see an alternate approach using routes to determine when modules are loaded and how to use Require.js to minifier and optimize your multi-file in javascript into one lean package, in order to use it in production.
+Then, we see an alternate approach using routes to determine when modules are loaded 
+and how to use Require.js to minifier and optimize your multi-file in javascript into one lean package, in order to use it in production.
