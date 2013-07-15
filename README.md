@@ -67,8 +67,7 @@ and how to use Require.js to minifier and optimize your multi-file in javascript
   - Organizing modules with RequireJS and AMD
   - Asynchrous Module Definition (AMD) 
   - Writing AMD modules with RequireJS
-  - Exercise: 
-    - Building a modular Backbone app with AMD & RequireJS 
+  - Exercise: Building a modular Backbone app with AMD & RequireJS 
 
 
 
