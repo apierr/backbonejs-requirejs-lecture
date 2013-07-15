@@ -11,7 +11,7 @@ using the [Backbone.js](http://backbonejs.org/) with its extension
 [Require.js](http://requirejs.org/) library.
 
 In the first part of the course, 
-we examine the concepts of *Backbone.js* and the problems *Backbone.js* has been designed to solve. 
+we examine the concepts of **Backbone.js** and the problems Backbone.js has been designed to solve. 
 After introducing the basic notions of [MVC](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) 
 web application, such as Models, Views, Collections, 
 Events, Listener, Template and Rendering, we write our first *Backbone.js* 
@@ -21,10 +21,9 @@ However, *Backbone.js* is not a complete framework,
 because it leaves much of the application design, architecture and scalability to the developer.
 This is the reason why, 
 in the second part of the course, 
-we build a much more robust project with great separation of concerns between design and code, combining Backbone.js and its extension,  
-*Backbone.Marionette*.
+we build a much more robust project with great separation of concerns between design and code, combining Backbone.js and its extension, **Backbone.Marionette**.
 
-In the third part of the course, we see in details how to use the library *Require.js* to write - in the javascript code - 
+In the third part of the course, we see in details how to use the library **Require.js** to write - in the javascript code - 
 a program organised in modules, each of them in a single file,
 with dependent variables which do not pollute the global scope.
 Then, we see an alternate approach using routes to determine when modules are loaded 
