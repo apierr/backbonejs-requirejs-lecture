@@ -29,3 +29,13 @@ a program organised in modules, each of them in a single file,
 with dependent variables which do not pollute the global scope.
 Then, we see an alternate approach using routes to determine when modules are loaded 
 and how to use Require.js to minifier and optimize your multi-file in javascript into one lean package, in order to use it in production.
+
+## 
+#Course Structure
+- MVC
+  - Introduction
+  - What is MVC?
+  - What does MVC give us?
+  - When Do I Need A JavaScript MVC Framework?
+
+
