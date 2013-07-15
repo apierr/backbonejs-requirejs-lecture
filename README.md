@@ -31,13 +31,13 @@ Then, we see an alternate approach using routes to determine when modules are lo
 and how to use Require.js to minifier and optimize your multi-file in javascript into one lean package, in order to use it in production.
 
 ## Course Structure
-- MVC
+- __MVC__
   - Introduction
   - What is MVC?
   - What does MVC give us?
   - When Do I Need A JavaScript MVC Framework?
 
-- Backbone.js
+- __Backbone.js__
   - What is Backbone.js?
   - Why Consider Backbone.js?
   - Backbone.js in detail:
@@ -50,24 +50,24 @@ and how to use Require.js to minifier and optimize your multi-file in javascript
   - Dependencies
   - Namespacing 
 
-- Exercise 1: Todo App - Your First Backbone.js App
+- __Exercise 1__: Todo App - Your First Backbone.js App
   - Application HTML
   - Todo model
   - Todo collection
   - Application View
 
-- Backbone Extensions
+- __Backbone Extensions__
   - Backbone.Marionette
-  - Exercise 2: Marionette Todo App
+  - __Exercise 2__: Marionette Todo App
   - Is the Marionette implementation of the Todo app more maintainable?
 
-- Modular Development
+- __Modular Development__
   - Introduction
   - Maintainability problems with multiple script files
   - Organizing modules with RequireJS and AMD
   - Asynchrous Module Definition (AMD) 
   - Writing AMD modules with RequireJS
-  - Exercise: Building a modular Backbone app with AMD & RequireJS 
+  - __Exercise 3__: Building a modular Backbone app with AMD & RequireJS 
 
 
 
