@@ -30,12 +30,47 @@ with dependent variables which do not pollute the global scope.
 Then, we see an alternate approach using routes to determine when modules are loaded 
 and how to use Require.js to minifier and optimize your multi-file in javascript into one lean package, in order to use it in production.
 
-## 
-#Course Structure
+## Course Structure
 - MVC
   - Introduction
   - What is MVC?
   - What does MVC give us?
   - When Do I Need A JavaScript MVC Framework?
+
+- Backbone.js
+  - What is Backbone.js?
+  - Why Consider Backbone.js?
+  - Backbone.js in detail:
+  - Models
+  - Views 
+  - Collections
+  - Events
+  - Routers
+  - Inheritance & Mixins
+  - Dependencies
+  - Namespacing 
+
+- Exercise 1: Todo App - Your First Backbone.js App
+  - Application HTML
+  - Todo model
+  - Todo collection
+  - Application View
+
+- Backbone Extensions
+  - Backbone.Marionette
+  - Exercise 2: Marionette Todo App
+  - Is the Marionette implementation of the Todo app more maintainable?
+
+- Modular Development
+  - Introduction
+  - Maintainability problems with multiple script files
+  - Organizing modules with RequireJS and AMD
+  - Asynchrous Module Definition (AMD) 
+  - Writing AMD modules with RequireJS
+  - Exercise: 
+    - Building a modular Backbone app with AMD & RequireJS 
+
+
+
 
 
