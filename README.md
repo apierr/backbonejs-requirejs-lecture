@@ -1,4 +1,4 @@
-hands-on-backbone-require-js
+Backbone.js and Require.js lecture
 ============================
 
 ## Course Description
