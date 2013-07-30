@@ -40,14 +40,14 @@ and how to use Require.js to minifier and optimize your multi-file in javascript
   - What is Backbone.js?
   - Why Consider Backbone.js?
   - Backbone.js in detail:
-    - Models
-    - Views 
-    - Collections
-    - Events
-    - Routers
-    - Inheritance & Mixins
-    - Dependencies
-    - Namespacing 
+    * Models
+    * Views 
+    * Collections
+    * Events
+    * Routers
+    * Inheritance & Mixins
+    * Dependencies
+    * Namespacing 
 
 - __Exercise 1__: Todo App - Your First Backbone.js App
   - Application HTML
