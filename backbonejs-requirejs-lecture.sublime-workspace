@@ -1,0 +1,264 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"h",
+				"h2	Tag"
+			],
+			[
+				"li",
+				"li	Tag"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"ima",
+				"background-image"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"co",
+				"code	Tag"
+			],
+			[
+				"se",
+				"section	Tag"
+			],
+			[
+				"fun",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"package insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 167.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/antoniopierro/Sites/ecolemultimedia/index.html",
+		"/Users/antoniopierro/Sites/ecolemultimedia/backbonejs.php",
+		"/Users/antoniopierro/Sites/ecolemultimedia/backbonejs.html",
+		"/Users/antoniopierro/Sites/ecolemultimedia/assets/css/main.css",
+		"/Users/antoniopierro/Sites/ecolemultimedia/assets/css/media.css",
+		"/Users/antoniopierro/Sites/unica/analyticstracking.php",
+		"/Users/antoniopierro/Sites/unica/unica.sublime-project",
+		"/Users/antoniopierro/Sites/backbone-worshop/index.html",
+		"/Users/antoniopierro/Sites/unica/math.html",
+		"/Users/antoniopierro/Sites/backbone-worshop/plugin/postmessage/postmessage.js",
+		"/Users/antoniopierro/Sites/CoCoTask/index.html",
+		"/Users/antoniopierro/Sites/CoCoTask/component.json",
+		"/Users/antoniopierro/Sites/CoCoTask/cocotask.sublime-project",
+		"/Users/antoniopierro/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/antoniopierro/Sites/cisiaonline/index.html",
+		"/tmp/01-personaggi.txt",
+		"/Users/antoniopierro/Sites/AchieveMonkey/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/doc/installation.rst",
+		"/Users/antoniopierro/Sites/AchieveMonkey/src/HighFive/FrontendBundle/Resources/public/js/templates/header/notification.hbs",
+		"/Users/antoniopierro/Sites/AchieveMonkey/src/HighFive/FrontendBundle/Resources/public/vendor/js/handlebars-1.0.0.beta.6.js",
+		"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/public/js/feedback.js",
+		"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/views/Contest/Main/show.html.twig",
+		"/Users/antoniopierro/Sites/Leemon/incenteev.sublime-project",
+		"/Users/antoniopierro/Sites/client/sharm/classes/Sharm.js",
+		"/Users/antoniopierro/Sites/client/apps/forum/models/Message.js",
+		"/Users/antoniopierro/Sites/client/apps/forum/views/MessageView.js",
+		"/Users/antoniopierro/Sites/client/apps/forum/views/ForumView.js",
+		"/Users/antoniopierro/Sites/client/appCompany/classes/Company.js",
+		"/Users/antoniopierro/Sites/client/appCompany/classes/CompanyAPI.js",
+		"/Users/antoniopierro/Sites/client/apps/forum/app.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/public",
+			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/views",
+			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/public",
+			"/Users/antoniopierro/Sites/client"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"reference",
+			"slides",
+			"img",
+			"png",
+			"center:",
+			"le f",
+			"fisce",
+			"<\n",
+			"					\n",
+			"this.data('initialForm')",
+			"script",
+			"comment",
+			"messageElement",
+			"checkLink",
+			"author",
+			"apply",
+			"Querier.ap",
+			"Querier",
+			"limi"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"img",
+				"plugin/postmessage/postmessage.js"
+			],
+			[
+				"install",
+				"vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/doc/installation.rst"
+			],
+			[
+				"handlebars",
+				"src/HighFive/FrontendBundle/Resources/public/vendor/js/handlebars-1.0.0.beta.6.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 294.0,
+	"status_bar_visible": true
+}

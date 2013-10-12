@@ -1,0 +1,467 @@
+<!-- ********************* BACKBONE PRESENTATION 01/03 ********************** -->
+<section>
+	<h1>Tutoriel Backbonejs</h1>
+	<img class="logo" src="http://arcane-refuge-8744.herokuapp.com/img/backbone-300x300.png">
+	<p>
+		<small>Created by <a href="#">Antonio Pierro</a> / <a href="http://twitter.com/antonio_pierro_">@antonio_pierro_</a></small>
+	</p>
+</section>
+<!--SLIDE1-->
+<section>
+	<section>
+		<h2>Qu'est-ce que MVC?</h2>
+		<ul>
+			<li>MVC de l'anglais model-view-controller</li>
+			<li>Ce paradigme regroupe les fonctions nécessaires en trois catégories :</li>
+			<ol>
+				<li>un modèle (modèle de données)</li>
+				<li>une vue (présentation, interface utilisateur)</li>
+				<li>un contrôleur (logique de contrôle, gestion des événements, synchronisation)</li>
+			</ol>
+		</ul>
+	</section>
+	<section>
+		<h2>"Bonjour tout le monde" en modèle MVC</h2>
+		<pre><code>var M = {}, V = {}, C = {};
+
+M.data = "Bonjour tout le monde";
+
+V.render = function (M) { alert(M.data); }
+
+C.handleOnload = function () { V.render(M); }
+
+window.onload = C.handleOnLoad;</code></pre>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h2>Qu'est-ce que Backbonejs?</h2>
+		<ul>
+			<li>Backbonejs est un framework javascript qui permet de faire du MVC côté client.</li>
+			<li>C’est un framework que permet d’écrire du javascript plus propre et plus maintenable</li>
+			<li>Backbonejs peut se définir comme un framework MVC mais pas au sens classique du terme. <br>Ici le C représente des Collections d’objets. Le M et le V désignent respectivement les modèles et les vues.</li>
+		</ul>
+	</section>
+	<section>
+		<h2>"Bonjour tout le monde" en modèle Backbone.js</h2>
+		<pre><code>(function($){
+     var AppView = Backbone.View.extend({    
+         el: $('body'),
+         render: function(){
+             $(this.el).append("Bonjour tout le monde");
+         },
+         initialize: function(){
+             _.bindAll(this, 'render');           
+             this.render();
+         },
+     });
+     var appView = new AppView();      
+ })(jQuery);</code></pre>
+	</section>
+</section>
+
+<section>
+<h2>Quand utiliser Backbone.js</h2>
+	<ul>
+		<li>Backbonejs est un excellent choix pour les applications dites «single page application», c’est à dire une page principale avec un nombre important d’interactions utilisateur.</li>
+		<li>Le code créé avec Backbone.js peut être testé via jasmine.</li>
+	</ul>
+</section>
+
+<!-- **************** THE BACKBONE MODEL ******************** !-->
+<section>
+	<section>
+		<h2>Définition du modèle</h2>
+		<ul>
+			<li>Contient les données d’un objet – associations clés/valeurs.</li>
+			<li>Les modèles sont responsables de la logique métier (business logic) et peuvent également servir pour la persistance, aussi bien locale avec localStorage que distante via des API RESTful en JSON.</li>
+			<li>Les modèles proposent des enregistrements clé‐valeur et des événements associés.</li>
+		</ul>
+		<aside class="notes">
+	        A common misconception is that the DOM is a part of the JavaScript language. It isn’t. In fact, it is a completely separate API that JavaScript interacts with. Having the ability to query the current “state” of your application without always resorting to querying the DOM is a HUGE WIN.
+    	</aside>
+	</section>
+	<section>
+		<h2>Modèle en détail: création</h2>
+		<ul>
+			<li>
+				Les modèles peuvent être créés par:
+				<pre><code>var MyModel = Backbone.Model.extend({});</code></pre>
+			</li>
+			<li> We can then create our own concrete instance of a (Todo) model with no values at all:
+				<pre><code>var myModel1 = new MyModel();
+console.log(myModel1);
+// or with some arbitrary data:
+var myModel2 = new MyModel({
+     title: 'my first title model', completed: true
+});</code></pre>
+			</li>
+		</ul>
+		<aside class="notes">extend sets up the prototype chain</aside>
+	</section>
+	<section>
+		<h2>Modèle en détail: Initialization</h2>
+		<ul>
+			<li>The initialize() method is called when a new instance of a model is created. Its use is optional, however you’ll see why it’s good practice to use it below:
+			<pre><code>var MyModel = Backbone.Model.extend({ 
+	initialize: function(){
+         console.log('This model has been initialized.'); 
+     }
+});
+var myModel = new MyModel();</code></pre></li>
+		</ul>
+	</section>
+	<section>
+		<h2>Modèle en détail: Default values</h2>
+		<ul>
+		<li>
+			There are times when you want your model to have a set of default values (e.g. in a scenario where a complete set of data isn’t provided by the user):
+			<pre><code>var Todo = Backbone.Model.extend({
+     defaults: {
+		 title: '',
+		 completed: false
+     }
+});</code></pre>
+		</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Modèle en détail: Getters & Setters</h2>
+		<ul><li>Model.get() provides easy access to a model’s attributes.
+		<pre><code>myModel.get('title');
+myModel.toJSON() // get all of a model’s data attributes </code></pre>
+		</li>
+		<li>Model.set() allows us to pass attributes into an instance of our model:
+		<pre><code>myModel.set("title", "My new title."); 
+console.log('myModel title: ' + myModel.get('title'));</code></pre></li></ul></section>
+		<section><h2>Modèle en détail: Listening for changes to your model</h2>
+		<ul><li>Modèle can have listeners bound to them which detect when their values change:
+		<pre><code>var MyModel = Backbone.Model.extend({
+     initialize: function() {
+         this.on('change', function() {
+             console.log('- Values for this model have changed.');
+         });
+     }
+});</code></pre> </li></ul>
+	</section>
+
+	<section>
+		<h2>Modèle en détail: Validation</h2><ul><li>
+		Backbone supports model validation which allows checking the attribute values for a model prior to them being set.<pre><code>var MyModel = Backbone.Model.extend({  
+     validate: function(attribs, options) {
+         if(attribs.title === undefined) {
+             return "Remember to set a title for your todo.";
+         } 
+     }
+});</code></pre>
+		 <aside class="notes">
+		 <ul>
+		 	<li>By default validate is called before save, but can also be called before set if {validate:true} is passed.</li>
+		 	<li>Backbone passes the attributes object (attribs param in above example) by shallow copy to the validate function using the Underscore _.extend method. This means that it is not possible to change any Number, String or Boolean attribute but it is possible to change attributes of objects because they are passed by reference. As shallow copy doesn’t copy objects by implicitly copying them, but rather, by reference, one can change the attributes on those objects.
+		An example of this (by @fivetanley) is available <a target="_" href="http://jsfiddle.net/2NdDY/7/">here</a>.
+		 	</li>
+		 </ul> </aside>
+		</li></ul>
+	</section>
+	<section><h2>Modèle en détail: Exercice</h2></section>
+	<section><h2>Modèle en détail: Solution</h2></section>
+</section>
+
+<!-- **************** THE BACKBONE VIEW ******************** !-->
+<section>
+	<section>
+		<h2>Définition du vue</h2>
+		<ul>
+		<li>Les vues font la liaison entre les modèles et le DOM. </li>
+		<li>Elles mettent à jour le code HTML en fonction des modifications des modèles et, dans l’autre sens, peuvent gérer les événements du DOM;</li>
+		</ul>
+	</section>
+
+<section>
+	<h2>Vue en détail: création</h2>
+	<ul><li>Les Vues peuvent être créés par:<pre><code>var MyView = Backbone.View.extend({
+});
+var myView = new MyView();
+console.log(myView.el);
+	</code></pre></li>
+	<li><strong>el</strong> is basically a reference to a DOM element and all views must have one.</li></ul>
+</section>
+
+<section>
+<h2>Vue en détail: tagName, id and className</h2>
+<ul><li>If you want to create a new element for your view,<br>set any combination of the following view’s properties: <br>tagName, id and className<pre>
+<code>var MyView = Backbone.View.extend({
+     tagName: 'ul', // required, but defaults to 'div' if not set
+     className: 'container', // optional
+     id: 'todos' // optional
+});
+var myView = new MyView();
+console.log(myView.el);
+</code>
+</pre></li>
+</section>
+
+<section>
+	<h2>Vue en détail: template</h2>
+	<ul>
+		<li>
+			It's convenient to define a template file to use on your view:s
+<pre><code>//template file
+<script type="text/template" id="form-tpl">
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= name %>">
+    <label>Age:</label>
+    <input type="text" name="age" value="<%= age %>">
+</script>
+<div id="form"></div>
+</code></pre>
+<pre><code>var MyView = Backbone.View.extend({
+     el: "#form",
+     render: function() {
+         var html = _.template($('#form-tpl').html(), {age:12, name:'ciao'});
+         this.$el.html(html);
+    }
+});</code></pre>
+</li>
+<li>You can pass the model to the istance view:<pre><code>myView = new MyView({model: myModel});</code></pre></li>
+	</ul>
+</section>
+
+<section><h2>Vue en détail: Exercice</h2>
+<ul><li>Create a model and a view class.</li>
+<li>Create an instance of model and view</li>
+<li>Create a template</li>
+<li>Use all together to create an app able to render the model in the view</li></ul></section>
+
+<section><h2>Vue en détail: <a target="_" href="http://jsfiddle.net/CX3ud/29/">Solution</a></h2>
+<pre><code><script type="text/template" id="form-tpl">
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= name %>">
+    <label>Age:</label>
+    <input type="text" name="age" value="<%= age %>">
+</script>
+<div id="form"></div></code></pre>
+<pre><code>var MyModel = Backbone.Model.extend({});
+var MyView = Backbone.View.extend({
+    el: "#form",
+    render: function() {
+        var html = _.template($('#form-tpl').html(), this.model.toJSON());
+        this.$el.html(html);
+    }
+});
+
+$(function() {
+    var person = new MyModel({
+        name: 'Thomas',
+        age: 37
+    }),
+    app = new MyView({model: person});
+    app.render();
+});</code></pre>
+</section>
+
+
+
+</section>
+
+<!-- **************** THE BACKBONE COLLECTION ******************** !-->
+<section>
+<section>
+<h2>Définition du collection</h2>
+<ul>
+<li>Collections are ordered sets of models</li>
+<li>Les collections offrent un catalogue bien pratique de méthodes d’énumération: ce sont les méthodes map, reduce, filter importées depuis underscore.js</li>
+<li>underscore.js est une des rares dépendances de Backbone.js</li>
+</ul>
+</section>
+
+<section>
+	<h2>Collection en détail: création</h2>
+	<ul><li>On suppose d'avoir déjà défini un modèle MyModel</li>
+		<li>la collection peut être créés par:<pre><code>var MyCollection = Backbone.Collection.extend({
+			model: myModel
+});
+var myCollection = new MyCollection();
+console.log(myCollection);
+</code></pre></li>
+	</ul>
+</section>
+
+<section><h2>Collection en détail: Getters and Setters</h2>
+<ul>
+<li>Collection.get() accepts a single id as follows:<pre><code>var myModel2 = myCollection.get(2);</code></pre></li>
+<li>Backbone Collections don’t have setters as such, <br>
+	but do support adding new models via <strong>.add()</strong><br>
+	and removing models via <strong>.remove()</strong>.</li>
+</ul>
+</section>
+
+<section><h2>Collection en détail: reset</h2>
+<ul>
+<li>Rather than adding or removing models individually, <br>
+	you might occasionally wish to update an entire collection at once:
+	<pre><code>TodosCollection.add([
+     { title: 'go to Jamaica.', completed: false }, 
+     { title: 'go to China.', completed: false },
+     { title: 'go to Disneyland.', completed: true }
+]);
+console.log('Collection size: ' + TodosCollection.length);
+TodosCollection.reset([
+     { title: 'go to Cuba.', completed: false }
+]);
+console.log('Collection size: ' + TodosCollection.length);</code></pre></li>
+</ul>
+</section>
+
+<section><h2>Collection en détail: forEach et sortBy()</h2>
+<ul>
+<li><strong>forEach</strong> method can be used for iterating over collection:<pre><code>TodosCollection.forEach(function(model){ 
+	console.log(model.get('title'));
+});
+</code></pre></li>
+<li><strong>sortBy()</strong> method that can be used to sort a collection of todos based on a particular attribute:<pre><code>var sortedByAlphabet = TodosCollection.sortBy(function (todo) {
+     return todo.get("title").toLowerCase();
+});</code></pre></li>
+</ul>
+</section>
+
+<section><h2>Collection en détail: xxxxxxxx</h2>
+<ul>
+<li></li>
+<li></li>
+</ul>
+</section>
+
+</section>
+
+<section>
+	<h2>Collection en détail: </h2>
+	<ul>
+		<li></li>
+	</ul>
+</section>
+</section>
+
+<section>
+<section>
+	<h2>L’architecture du projet</h2>
+	<p> Notre application devrait être découplée en plusieurs fichiers, en séparant modèle, vue etc…</p>
+		<a href="#" class="image navigate-down">
+			<img width="108" height="138" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+		</a>
+</section>
+<section>
+		<ul>
+			<li>assets</li>
+			<ul>
+				<li>js</li>
+			</ul>
+			<li>src</li>
+			<li>modules</li>
+		</ul>
+</section>
+<section>
+	<ul>
+		<li><b>assets/</b>: répertoire regroupant la plupart des fichiers statiques, comme les fichiers CSS, les images ainsi que les srclibrairies JavaScripts (backbone.js, jquery.js et underscore.js)</li>
+		<li><b>src/</b>: c’est le dossier de notre application Backbone.js, il va contenir tous les fichiers JavaScript propres à notre application. Le dossier modules/ regoupera les vues, le router, les collections et les models. </li>
+	</ul>	
+</section>
+	<aside class="notes">
+		Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+	</aside>
+
+</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Le fichier index.html</h2>
+
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+					<pre>
+						<code>< !doctype html>
+< html lang="fr">
+< head>
+    <meta charset="utf-8">
+    <title>Mon application Backbone JS par Atinux.fr</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+< / head>
+< body>
+    <div id="content">
+    <!-- votre contenu ici -->
+    </div>
+    <!-- Librairies (l'ordre compte) -->
+    <script type="text/javascript" src="assets/js/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/libs/underscore-min.js"></script>
+    <script type="text/javascript" src="assets/js/libs/backbone-min.js"></script>
+    <!-- Base de l'application Backbone JS -->
+    <script type="text/javascript" src="src/app.js"></script>
+    <!-- Les modules de l'application, l'ordre ne compte pas -->
+< / body>
+< / html>
+					</code>
+					</pre>
+					<aside class="notes">
+Comme vous le pouvez le voir, le contenu html de notre application sera englobé dans une div avec l’id «content », c’est surtout pour éviter d’écraser l’insertion des librairies ou autres codes importants comme les templates. C’est donc le sélecteur $(‘#content’) que l’on utilisera pour initier la base de notre application. Ensuite on inclut toutes les librairies dont Backbone JS a besoin pour fonctionner, là rien de bien méchant, attention cependant, jQuery et underscore.js doivent être inclus avant backbone.js.
+					</aside>
+					</section>
+				</section>
+				<!--SLIDE_3-->
+				<section>
+					<section>
+					<h2>Le namespace</h2>
+					<p>
+						Notre fichier app.js va créer le namespace de notre application, dans notre exemple nous allons le nommer app. C’est donc un énorme hash qui va regrouper nos vues, nos models, nos collections, notre router, leurs instances ainsi que pleins de variables et de fonctions propres à notre application. 
+					</p>
+				</section>
+					<section>
+						<pre><code>var app = {
+  // Classes
+  Collections: {},
+  Models: {},
+  Views: {},
+  // Instances
+  collections: {},
+  models: {},
+  views: {},
+  init: function () {
+    // Initialisation de l'application ici
+  }
+};
+
+$(document).ready(function () {
+  // On lance l'application une fois que notre HTML est chargé
+  app.init();
+}) ;
+						</code></pre>
+
+					</section>
+					</section>
+
+<!--END SLIDE_3-->
+<section>
+	<h3>References</h3>
+	<p>
+		<ul>
+			<li><a target="_" href="http://linuxfr.org/news/d%C3%A9couvrez-backbonejs%C2%A0050-pour-organiser-votre-code-javascript">Découvrez Backbone.js 0.5.0 pour organiser votre code JavaScript</a></li>
+			<li><a target="_" href="http://www.atinux.fr/2011/12/10/organiser-son-code-backbone-js-en-modules/">Organiser son code Backbone JS en modules</a></li>
+			<li><a target="_" href="http://blog.keiruaprod.fr/2012/05/08/intro-a-backbone-js-1-les-vues/">Intro à Backbone.js – #1 : les vues</a></li>
+			<li><a target="_" href="http://fr.clever-age.com/veille/blog/decouvrir-backbone-js-avec-todomvc.html">Découvrir Backbone.js au travers de l’application TodoMVC</a></li>
+			<li><a target="_" href="http://www.rvl.io/mindelusions/backbonejs">backbonejs on reveal.js</a></li>
+			<li><a href="http://backbone.codeschool.com/levels/1/challenges/5">backbone.codeschool</a></li>
+		</ul>
+	</p>
+</section>
+
+<section><h2>English to French</h2>
+<ul>
+	<li>By default</li>
+</ul>
+</section>
+
