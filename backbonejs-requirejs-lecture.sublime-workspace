@@ -100,6 +100,10 @@
 	},
 	"file_history":
 	[
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/index.html",
+		"/Users/antoniopierro/Sites/javascript-unit-testing-lecture/javascript-unit-testing-lecture.sublime-workspace",
+		"/Users/antoniopierro/Sites/javascript-unit-testing-lecture/assets/html/backbonejs.php",
+		"/Users/antoniopierro/Sites/javascript-unit-testing-lecture/index.html",
 		"/Users/antoniopierro/Sites/ecolemultimedia/index.html",
 		"/Users/antoniopierro/Sites/ecolemultimedia/backbonejs.php",
 		"/Users/antoniopierro/Sites/ecolemultimedia/backbonejs.html",
@@ -150,6 +154,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"data = \"Bonjour tout le mond",
 			"reference",
 			"slides",
 			"img",
@@ -259,6 +264,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 294.0,
+	"side_bar_width": 178.0,
 	"status_bar_visible": true
 }
