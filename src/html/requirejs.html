@@ -1,0 +1,263 @@
+<!-- ********************* BACKBONE PRESENTATION 01/03 ********************** -->
+<section>
+	<h1>Tutoriel Requirejs</h1>
+	<img class="logo" src="http://www.henriquebarroso.com/wp-content/uploads/2013/01/url.jpeg">
+	<p>
+		<small>Created by <a href="#">Antonio Pierro</a> / <a href="http://twitter.com/antonio_pierro_">@antonio_pierro_</a></small>
+	</p>
+</section>
+<!--SLIDE1-->
+<section>
+	<section>
+		<h2>AMD</h2>
+		<ul>
+			<li>The Asynchronous Module Definition (**AMD**) is an API which specifies a mechanism for:</li>
+			<ol>
+				<li>defining modules</li>
+				<li>defining its dependencies (that can be asynchronously loaded)</li>
+			</ol>
+			<li>The specification defines a single function "define" and the signature of the function is:<pre><code>define(id, dependencies, factory);</code></pre></li>
+		</ul>
+	</section>
+	<section>
+		<h2>AMD: define() function</h2>
+		<ul>
+			<li><pre><code>define(id, dependencies, factory);</code></pre></li>
+			<li>The first argument, id, is a string literal. It specifies the id of the module being defined. </li>
+			<li>The second argument, dependencies, is an array literal of the module ids that are dependencies required by the module that is being defined. </li>
+			<li>The third argument, factory, is a function that should be executed to instantiate the module or an object.</li>
+		</ul>
+	</section>
+	<section><h2>AMD: Example</h2>
+		<ul><li>Sets up the module with ID of "alpha", that uses the following three module IDs require, exports and beta<pre><code>define(
+	"alpha", 
+	["require", "exports", "beta"], 
+	function (require, exports, beta) {
+         exports.verb = function() {
+            return beta.verb();
+            //Or:
+            return require("beta").verb();
+     	}
+});</code></pre></li></ul></section>
+</section>
+
+<section>
+	<section><h2>RequireJS</h2>
+		<ul>
+			<li>RequireJS takes a different approach to script loading than traditional &lt;script&gt; tags.</li>
+			<li>RequireJS loads all code relative to a <em>baseUrl</em>.</li>
+			<li>The <em>data-main</em> attribute is a special attribute that require.js will check to start script loading. </li>
+		</ul>
+	</section>
+	<section>
+		<h2>RequireJS: example</h2>
+		<ul>
+			<li>This example will end up with a baseUrl of scripts:<br>
+				in index.html:
+				<pre><code>&lt;script data-main=&quot;js/app.js&quot; src=&quot;js/require.js&quot;&gt;&lt;/script&gt;</code></pre>
+			</li>
+			<li>
+				baseUrl can be set manually via the RequireJS config:<br>
+				in app.js
+				<pre><code>requirejs.config({
+    //By default load any module IDs from js/lib
+    baseUrl: 'js/lib',
+    //except, if the module ID starts with "app",
+    //load it from the js/app directory. paths
+    //config is relative to the baseUrl, and
+    //never includes a ".js" extension since
+    //the paths config could be for a directory.
+    paths: {
+        app: '../app'
+    }
+});</code></pre>
+			</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h2>RequireJS: Define a Module</h2>
+		<ul>
+			<li>A module is a well-scoped object that avoids polluting the global namespace.</li>
+			<li>It can receive the dependencies as arguments to the function that defines the module.</li>
+			<li>Modules in RequireJS are an extension of the Module Pattern:<pre><code>var UTIL = (function (parent, $) {
+	    //a sub-module that loads itself dynamically 
+	    // to its parent (creating it if it does not exist)
+	}(UTIL || {}, jQuery));</code></pre></li>
+		</ul>
+	</section>
+	<section>
+		<h2>Define a Module: <br>Simple Name/Value Pairs</h2>
+		<ul>
+			<li>If the module does not have any dependencies, and it is just a collection of name/value pairs, then just pass an object literal to define():</li>
+			<pre><code>//Inside file my/shirt.js:
+define({
+    color: "black",
+    size: "unisize"
+});</code></pre>
+		</ul>
+	</section>
+	<section>
+		<h2>Define a Module: <br>Definition Functions</h2>
+		<ul>
+			<li>If the module does not have dependencies, but needs to use a function to do some setup work, then define itself, pass a function to define():</li>
+			<pre><code>//my/shirt.js now does setup work
+//before returning its module definition.
+define(function () {
+    //Do setup work here
+
+    return {
+        color: "black",
+        size: "unisize"
+    }
+});</code></pre>
+		</ul>
+	</section>
+	<section>
+		<h2>Define a Module:</h2><h3>Definition Functions with Dependencies</h3>
+		<ul>
+			<li>If the module has dependencies, the first argument should be an array of dependency names, and the second argument should be a definition function.</li>
+			<li>The dependencies will be passed to the definition function as function arguments, listed in the same order as the order in the dependency array:</li>
+			<pre><code>//my/shirt.js now has some dependencies, a cart and inventory
+define(["./cart", "./inventory"], function(cart, inventory) {
+        //return an object to define the "my/shirt" module.
+        return {
+            color: "blue",
+            size: "large",
+            addToCart: function() {
+                inventory.decrement(this);
+                cart.add(this);
+            }
+}});</code></pre>
+		</ul>
+		<aside class="notes">In this example, a my/shirt module is created. It depends on my/cart and my/inventory. On disk, the files are structured like this:
+			<ul><li>my/cart.js</li><li>my/inventory.js</li><li>my/shirt.js</li></ul>
+//module in the same directory as shirt.js
+</aside>
+	</section>
+
+	<section>
+		<h2>Define a Module with a Name</h2>
+		<ul>
+			<li>You may encounter some define() calls that include a name for the module as the first argument to define():</li>
+			<pre><code>//Explicitly defines the "foo/title" module:
+    define("foo/title",
+        ["my/cart", "my/inventory"],
+        function(cart, inventory) {
+            //Define foo/title object in here.
+       }
+    );</code></pre>
+		</ul>
+	</section>
+</section>
+
+
+
+
+<section>
+	<section>
+		<h2>RequireJS: Circular Dependencies 1/2</h2>
+		<ul>
+			<li>If you define a circular dependency (a needs b and b needs a), then in this case when b's module function is called, it will get an undefined value for a.</li>
+			<li>b can fetch a later after modules have been defined by using the require() method</li>
+		</ul>
+		<pre><code>//Inside b.js:
+	define(["require", "a"],
+	    function(require, a) {
+	        //"a" in this case will be null if a also asked for b,
+	        //a circular dependency.
+	        return function(title) {
+	            return require("a").doSomething();
+	        }
+	    }
+	);</code></pre>
+	</section>
+	<section>
+		<h2>RequireJS: Circular Dependencies 2/2</h2>
+		<ul>
+			<li>Normally you should not need to use require() to fetch a module, but instead rely on the module being passed in to the function as an argument</li>
+			<li>Circular dependencies are rare, and usually a sign that you might want to rethink the design.</li>
+			<li>However, sometimes they are needed, and in that case, use require() as specified above.</li>
+		</ul>
+	</section>
+</section>
+
+
+<section>
+	<h2>Specify a JSONP Service Dependency</h2>
+	<ul>
+		<li>JSONP or "JSON with padding" is a communication technique used in JavaScript programs which run in Web browsers. </li>
+		<li>It provides a method to request data from a server in a different domain, something prohibited by typical web browsers because of the same origin policy.</li>
+		<pre><code>require(["http://example.com/api/data.json?callback=define"],
+    function (data) {
+        //The data object will be the API response for the
+        //JSONP data call.
+        console.log(data);
+    }
+);</code></pre>
+	</ul>
+</section>
+
+<section>
+	<section>
+		<h2>shim: Configure the dependencies</h2>
+		<ul>
+			<li>Use shim config for non-AMD scripts, scripts that do not already call define().</li>
+			<pre><code>requirejs.config({
+	    shim: {
+	        'backbone': {
+	            //These script dependencies should be loaded before loading
+	            //backbone.js
+	            deps: ['underscore', 'jquery'],
+	            //Once loaded, use the global 'Backbone' as the
+	            //module value.
+	            exports: 'Backbone'
+	        }
+	    }
+	});</code></pre>
+	<pre><code>// MyModel.js
+	define(['backbone'], function (Backbone) {
+	     return Backbone.Model.extend({});
+	});</code></pre>
+		</ul>
+	</section>
+	<section>
+		<h2></h2>
+		<ul>
+			<li>For "modules" that are just jQuery or Backbone plugins that do not need to export any module value, the shim config can just be an array of dependencies:</li>
+			<pre><code>requirejs.config({
+    shim: {
+        'jquery.colorize': ['jquery'],
+        'jquery.scroll': ['jquery'],
+        'backbone.layoutmanager': ['backbone']
+    }
+});</code></pre>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Important notes for "shim" config:</h2>
+		<ul>
+			<li>Setting shim by itself does not trigger code to load. To load modules that are part of or use shim config, a normal require/define call is needed.</li>
+			<li>Do not mix CDN loading with shim config in a build. Example scenario: you load jQuery from the CDN but use the shim config to load something that depends on jQuery. </li>
+		</ul>
+	</section>
+</section>
+
+<!--END REFERENCES-->
+<section>
+	<h3>References</h3>
+	<p>
+		<ul>
+			<li><a target="_" href="http://hugeen.com/2013/01/03/comment-debuter-avec-requirejs/">Comment débuter avec RequireJS</a></li>
+			<li><a target="_" href="http://www.insertafter.com//articles-utiliser_requirejs.html">Astuces pour utiliser pleinement RequireJS</a></li>
+			<li><a href="http://www.ringabell.org/un-simple-guide-pour-debuter-avec-requirejs/">UN SIMPLE GUIDE POUR DÉBUTER AVEC REQUIREJS</a></li>
+			<li><a href="http://ippon.developpez.com/tutoriels/javascript/amd-loader-code-javascript-organise-performant/">AMD loader pour un code JavaScript organisé et performant</a></li>
+			<li><a href="http://tekcollab.imdeo.com/requirejs-a-quoi-ca-sert/">requireJS : à quoi ça sert ?</a></li>
+			<li><a href="http://pullrequest.org/2012/01/04/requirejs.html">Organiser son code JavaScript avec RequireJS</a></li>
+			<li><a href="https://www.google.it/search?q=avec+RequireJS&oq=avec+RequireJS&aqs=chrome..69i57j69i60l2.357j0j4&sourceid=chrome&espv=210&es_sm=91&ie=UTF-8">google search: avec RequireJS</a></li>
+		</ul>
+	</p>
+</section>
