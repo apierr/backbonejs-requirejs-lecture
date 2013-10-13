@@ -1,0 +1,152 @@
+<!-- ***************** BACKBONE PRESENTATION (MARIONETTE) 02/03 ************ -->
+<section>
+	<h1>Tutoriel Marionette</h1>
+	<img class="logo" src="http://marionettejs.com/images/logo-a4052db8.png">
+	<p>
+		<small>Created by <a href="#">Antonio Pierro</a> / <a href="http://twitter.com/antonio_pierro_">@antonio_pierro_</a></small>
+	</p>
+</section>
+<!--SLIDE1-->
+<section>
+	<section>
+		<h2>Qu'est-ce que Backbone.Marionette?</h2>
+		<ul>
+			<li>It is a composite application library that aims to simplify the construction of large scale applications.</li>
+			</ol>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h2>Boilerplate Rendering Code</h2>
+
+		<ul>
+			<li>Without using Marionettejs I should write the View in this way:<pre><code>var MyView = Backbone.View.extend({ 
+     template: $('#my-view-template').html(),
+     render: function(){
+         var compiledTemplate = _.template(this.template);
+         var data = this.model.toJSON(); 
+         var html = compiledTemplate(data);
+         this.$el.html(html); 
+     }
+});</code></pre></li>
+<li>By using Marionettejs the code will be:<pre><code>var MyView = Marionette.ItemView.extend({ 
+     template: '#my-view-template'
+});</code></pre></li>
+		</ul>
+		<aside class="notes"><pre><code>// compile the Underscore.js template
+var compiledTemplate = _.template(this.template);
+// render the template with the model data
+var data = this.model.toJSON(); 
+var html = compiledTemplate(data);
+// populate the view with the rendered html</code></pre>		 
+		</aside>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h2>Memory Management</h2>
+		<ul>
+			<li>Marionette includes some advanced memory management in all of it’s views, making the job of cleaning up a view instance and it’s event handlers, easy.</li>
+			<li>Consider the following view implementation:
+				<pre><code>var ZombieView = Backbone.View.extend({ 
+     template: '#my-view-template',
+     initialize: function(){
+         // bind the model change to re-render this view
+         this.model.on('change', this.render, this); 
+     },
+     render: function(){
+         // This alert is going to demonstrate a problem
+         alert('We`re rendering the view');
+     }
+});</code></pre></li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Memory Management</h2>
+		<ul>
+			<li>If we create two instances of this view using the same variable name for both instances, and then change a value in the model, how many times will we see the alert box?<pre><code>var myModel = new MyModel({
+     name: 'Antonio', 
+     email: 'antonio@example.com'
+});</code></pre><pre><code>var zombieView = new ZombieView({
+     model: myModel
+});
+var zombieView = new ZombieView({
+     model: myModel
+});
+
+myModel.set('email', 'antonio@gmail.com');
+</code></pre></li>
+<li>When we run this code, we end up with the alert box showing up twice!</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Memory Management</h2>
+		<ul>
+			<li>Fixing this is easy. You just need to call off when the view is done with it’s work and ready to be closed. To do this, add a close method to the view:<pre>
+<code>var ZombieView = Backbone.View.extend({ 
+	template: '#my-view-template',
+	initialize: function(){
+		// bind the model change to re-render this view 
+		this.model.on('change', this.render, this);
+	},
+	close: function() {
+		this.model.off('change', this.render, this);
+	},
+	render: function(){
+    	// This alert is going to demonstrate a problem
+    	alert('We`re rendering the view');
+  	}
+});</code></pre></li>
+		</ul>
+	</section>
+	<section><h2>Memory Management</h2>
+		<ul><li>Rather than having to manually remove these event handlers, though, we can let Marionette do it for us.<pre>
+<code>var ZombieView = Marionette.ItemView.extend({ 
+	template: '#my-view-template',
+	initialize: function() {
+		// bind the model change to re-render this view
+		this.bindTo(this.model, 'change', this.render, this); 
+	},
+	render: function(){
+		// This alert is going to demonstrate a problem
+	    alert('We`re rendering the view');
+	}
+});</code></pre></li></ul></section>
+</section>
+
+<section>
+	<h2>Region Management</h2>
+	<ul>
+		<li>After a view is created, it typically needs to be placed in the DOM so that it becomes visible<pre><code>var myView = new MyView({
+     model: myModel
+}); 
+
+myView.render();
+
+$('#content').html(myView.el); // show the view in the DOM
+</code></pre></li>
+	<li>This, again, is boilerplate code. We shouldn’t have to manually call render and manually select the DOM elements to show the view:
+	<pre><code>var MyRegion = new Marionette.Region({ 
+     el: '#content'
+});
+var view1 = new MyView({ /* ... */ }); 
+myRegion.show(view1);
+var view2 = new MyView({ /* ... */ }); 
+myRegion.show(view2);
+</code></pre></li>
+	</ul>
+	<aside class="notes">There are several things to note, here. First, we’re telling the region what DOM element to manage by specifying an el in the region instance. Second, we’re no longer calling the render method on our views. And lastly, we’re not calling close on our view, either, though this is getting called for us.<br>
+When we use a region to manage the lifecycle of our views, and display the views in the DOM, the region itself handles these concerns. By passing a view instance in to the show method of the region, it will call the render method on the view for us. It will then take the resulting el of the view and populate the DOM element.<br>
+The next time we call the show method of the region, the region remembers that it is currently displaying a view. The region calls the close method on the view, removes it from the DOM, and then proceeds to run the render & display code for the new view that was passed in.</aside>
+</section>
+
+<section>
+	<h2></h2>
+	<ul>
+		<li></li>
+	</ul>
+</section>
