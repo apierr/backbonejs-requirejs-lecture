@@ -6,7 +6,7 @@
     "requirejs": "~2.1.8",
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
-    "backbone-amd": "latest",
+    "backbone": "latest",
     "underscore": "latest",
     "bootstrap": "~1.1.0",
     "backbone.localStorage": "latest",

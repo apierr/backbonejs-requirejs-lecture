@@ -29,8 +29,32 @@
 			</ol>
 		</ul></aside>
 	</section>
+
+	<section><h2>What does MVC give us?</h2>
+<ul>
+	<li>Easier overall maintenance. When updates need to be made to the application it is clear whether the changes are data-centric or merely visual, meaning changes to views.</li>
+	<li>This modularity allows developers responsible for core logic and developers working on the user-interfaces to work simultaneously</li>
+</ul>
+	</section>
+
+	<section><h2>Exercise 1: create your first MVC app</h2>
+<ul>
+	Create the following three objects:
+	<li>Controller (C): it listens on some kind of interaction/event stream.</li>
+	<li>Model (M): it could be a simple string</li>
+	<li>View (V): it has a method (render) able to show the data from the Model.</li>
+</ul>
+<aside class="notes">
+<ul>
+	<li>the View knows nothing about the Model apart from it implements some interface</li>
+	<li>the Model knows nothing of the View and the Controller</li>
+	<li>the Controller knows about both the Model and the View and tells the View to go do something with the data from the Model.</li>
+</ul>
+</aside>
+	</section>
+
 	<section>
-		<h2>"Bonjour tout le monde" en modèle MVC</h2>
+		<h2>Exercise 1: solution</h2>
 		<pre><code>var M = {}, V = {}, C = {};
 
 M.data = "Bonjour tout le monde";
@@ -39,15 +63,10 @@ V.render = function (M) { alert(M.data); }
 
 C.handleOnload = function () { V.render(M); }
 
-window.onload = C.handleOnLoad;</code></pre>
+window.onmousedown = C.handleOnLoad;</code></pre>
 	</section>
 
-	<section><h2>What does MVC give us?</h2>
-<ul>
-	<li>Easier overall maintenance. When updates need to be made to the application it is clear whether the changes are data-centric or merely visual, meaning changes to views.</li>
-	<li>This modularity allows developers responsible for core logic and developers working on the user-interfaces to work simultaneously</li>
-</ul>
-	</section>
+
 
 </section>
 
@@ -227,8 +246,40 @@ console.log('myModel title: ' + myModel.get('title'));</code></pre></li></ul></s
 		 </ul> </aside>
 		</li></ul>
 	</section>
-	<section><h2>Modèle en détail: Exercice</h2></section>
-	<section><h2>Modèle en détail: Solution</h2></section>
+	<section><h2>Backbone Model: Exercice 1</h2>
+	<ul><li>Create a javascript object</li> 
+	<li>Convert it to a model in backbone.</li></ul></section>
+	<section><h2>Backbone Model: Solution 1</h2>
+<pre><code>var your_object = {familyLogin: 'userLogin1', login: 'eg'}
+
+var YourModel = Backbone.Model.extend();
+
+var your_model = new YourModel(your_object);
+</code></pre>
+	</section>
+
+	<section><h2>Backbone Model: Exercice 2</h2>
+<ul>
+	<li>Extend the Backbone.Model with a function able to iterate on the model attributes and change value for some condition.</li>
+	<li>For exemple if the attributes model is the following: 
+	<pre><code>{name:'Antonio', age: 36, over_18: null}</code></pre> 
+	it should be able to change it in 
+	<pre><code>{name:'Antonio', age: 36, over_18: true}</code></pre></li>
+</ul>
+	</section>
+
+	<section><h2>Backbone Model: Solution 2</h2>
+<pre><code>var MyModel = Backbone.Model.extend({
+    initialize: function(attr) {
+        this.set({over_18: false});
+    	if(attr.age > 18) {
+    		this.set({over_18: true});
+    	}
+    }
+});
+var myModel = new MyModel({name:'Antonio', age: 36, over_18: null});
+</code></pre>
+	</section>
 </section>
 
 <!-- **************** THE BACKBONE VIEW ******************** !-->
@@ -324,16 +375,17 @@ console.log(myView.el);
 
 	</section>
 <section><h2>Backbone View: Solution 1</h2>
-<pre><code><div id="certificate"></div>
-<script type="text/javascript"> 
+<pre><code>&lt;div id="certificate"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt; 
 CertificateView = Backbone.View.extend({
     initialize: function() { 
     	this.render();
     },
     render: function() {
-        $(this.el).html("<h1>Guy Incognito</h1><p>DOB: March 2, 1967</p>");
-    } });
-    var certificate_view = new CertificateView({ el: $("#certificate")}); 
+        $(this.el).html("&lt;h1&gt;Guy Incognito&lt;/h1&gt;&ls;p&gt;DOB: March 2, 1967&lt;/p&gt;");
+    } 
+});
+var certificate_view = new CertificateView({ el: $("#certificate")}); 
 </script></code></pre>
 </section>
 
@@ -346,12 +398,12 @@ CertificateView = Backbone.View.extend({
 <li>Use all together to create an app able to render the model in the view</li></ul></section>
 
 <section><h2>Backbone View: <a target="_" href="http://jsfiddle.net/CX3ud/29/">Solution 2</a></h2>
-<pre><code><script type="text/template" id="form-tpl">
+<pre><code>&lt;script type="text/template" id="form-tpl"&gt;
     <label>Name:</label>
     <input type="text" name="name" value="<%= name %>">
     <label>Age:</label>
     <input type="text" name="age" value="<%= age %>">
-</script>
+&lt;/script&gt;
 <div id="form"></div></code></pre>
 <pre><code>var MyModel = Backbone.Model.extend({});
 var MyView = Backbone.View.extend({
@@ -475,12 +527,45 @@ console.log('Collection size: ' + myCollection.length);</code></pre></li>
 </ul>
 </section>
 
-<section><h2>Collection en détail: xxxxxxxx</h2>
+<section><h2>Backbone collection: Excercise 1</h2>
 <ul>
-<li></li>
-<li></li>
+<li>Explain what is the difference betwwen these two codes and why the first one is broken:
+<pre><code>// code 1
+var MyCollection = new Backbone.Collection.extend({
+     model: MyModel
+});</code></pre>
+<pre><code>// code 2
+var MyCollection = Backbone.Collection.extend({
+     model: MyModel
+});</code></pre></li>
+<li>you can look the annotated source code (http://backbonejs.org/docs/backbone.html)</li>
 </ul>
+<aside class="notes">
+	if you run the following
+	<code>var myCollection = new MyCollection()</code>
+	you get: TypeError: Object [object Object] has no method 'apply'
+</aside>
 </section>
+
+
+<section><h2>Backbone collection: Solution 1</h2>
+<ul><li>In Backbone.js we have:<pre><code>var extend = function(protoProps, staticProps) {
+
+    var parent = this;
+    var child;
+
+    if (protoProps && _.has(protoProps, 'constructor')) {
+      child = protoProps.constructor;
+    } else {
+      child = function(){ return parent.apply(this, arguments); };
+    }
+.....
+    </code></pre></li>
+<li>If you instantiate Backbone.Collection.extend with the new operator, then "parent" 
+  will refer to the extend object
+  <li>If you don't use new operator, then "parent"
+will refer to Backbone.Collection and since you can only call .apply on functions, the code will break.</li>
+    </ul></section>
 
 </section>
 
@@ -606,6 +691,28 @@ Comme vous le pouvez le voir, le contenu html de notre application sera englobé
 
 
 <!--END SLIDE_3-->
+<section>
+<section><h2>DOM Storage</h2>
+	<ul>
+		<li>The DOM Storage mechanism is a means through which string key/value pairs can be securely stored and later retrieved for use.</li>
+		<li>sessionStorage: is a global object (sessionStorage) that maintains a storage area that's available for the duration of the page session.</li>
+		<li>localStorage: is the same as sessionStorage with same same-origin rules applied but it is persistent.</li>
+	</ul>
+</section>
+<section><h2>Storage Interface</h2>
+	<pre><code>interface Storage {
+  [IndexGetter] DOMString key(in unsigned long index);
+  [NameGetter] DOMString getItem(in DOMString key);
+  [NameSetter] void setItem(in DOMString key, in DOMString data);
+  [NameDeleter] void removeItem(in DOMString key);
+  void clear();
+};</code></pre>
+<aside class="notes">For Java and ECMAScript, 
+DOMString is bound to the String type because both languages also use UTF-16 as their encoding.</aside>
+</section>
+	
+</section>
+
 <section>
 	<h3>References</h3>
 	<p>
