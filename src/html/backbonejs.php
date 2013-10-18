@@ -38,6 +38,7 @@ document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.se
 		</div>
 <script src="<?=$ROOT_VENDORS?>reveal.js/lib/js/head.min.js"></script>
 <script src="<?=$ROOT_VENDORS?>reveal.js/js/reveal.min.js"></script>
+<script type="text/javascript" src="<?=$ROOT_VENDORS?>backbone-amd/backbone-min.js"></script>
 <script src="../js/reveal.conf.js"></script>
 	</body>
 </html>
