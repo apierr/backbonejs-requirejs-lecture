@@ -92,10 +92,6 @@ define(["app", "apps/contacts/list/list_view"], function(ContactManager, View){
                 });
               });
 
-              contactsListView.on("itemview:contact:delete", function(childView, model){
-                model.destroy();
-              });
-
               ContactManager.mainRegion.show(contactsListLayout);
             });
           });

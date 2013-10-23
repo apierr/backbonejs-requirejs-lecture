@@ -46,8 +46,7 @@ define(["app",
       template: listItemTpl,
 
       events: {
-        "click": "highlightName",
-        "click button.js-delete": "deleteClicked"
+        "click": "highlightName"
       },
 
       flash: function(cssClass){
@@ -61,11 +60,6 @@ define(["app",
 
       highlightName: function(e){
         this.$el.toggleClass("warning");
-      },
-
-      deleteClicked: function(e){
-        e.stopPropagation();
-        this.trigger("contact:delete", this.model);
       },
 
       remove: function(){
