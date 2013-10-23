@@ -5,7 +5,8 @@ define(["app",
         "tpl!apps/contacts/list/templates/list.tpl",
         "tpl!apps/contacts/list/templates/list_item.tpl"],
        function(ContactManager, layoutTpl, panelTpl, noneTpl, listTpl, listItemTpl){
-  ContactManager.module("ContactsApp.List.View", function(View, ContactManager, Backbone, Marionette, $, _){
+  ContactManager.module("ContactsApp.List.View", 
+    function(View, ContactManager, Backbone, Marionette, $, _){
     View.Layout = Marionette.Layout.extend({
       template: layoutTpl,
 
@@ -17,10 +18,6 @@ define(["app",
 
     View.Panel = Marionette.ItemView.extend({
       template: panelTpl,
-
-      triggers: {
-        "click button.js-new": "contact:new"
-      },
 
       events: {
         "submit #filter-form": "filterContacts"
