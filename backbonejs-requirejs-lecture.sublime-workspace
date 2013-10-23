@@ -4,12 +4,20 @@
 		"selected_items":
 		[
 			[
-				"h",
-				"h2	Tag"
-			],
-			[
 				"li",
 				"li	Tag"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"as",
+				"aside	Tag"
+			],
+			[
+				"h",
+				"h2	Tag"
 			],
 			[
 				"bo",
@@ -43,6 +51,49 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/html/backbonejs.html",
+			"settings":
+			{
+				"buffer_size": 42715,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/html/marionette.html",
+			"settings":
+			{
+				"buffer_size": 8643,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/exercises/view_01/test.js",
+			"settings":
+			{
+				"buffer_size": 754,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/exercises/view_01/index.html",
+			"settings":
+			{
+				"buffer_size": 569,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "var Task = Backbone.Model.extend({\n	// Default attributes for the task\n	// and ensure that each task created has `title` and `completed` keys. \n	defaults: {\n		title: '',\n		completed: false \n	},\n	localStorage: new Backbone.LocalStorage('tasks-backbone'),\n    // Toggle the `completed` state of this todo item.\n	toggle: function() { \n		this.save({\n			completed: !this.get('completed') \n		});\n	} \n});\n\nvar Tasks = Backbone.Collection.extend({\n\n	model: Task,\n\n	localStorage: new Backbone.LocalStorage('tasks-backbone'),\n\n	completed: function() {\n		return this.filter(function( task ) {\n			return task.get('completed'); });\n	},\n    \n	remaining: function() {\n		return this.filter(function( task ) {\n			return !task.get('completed'); });\n	},\n});\n\n// Create our global collection of **Todos**.\napp.Tasks = new Tasks();",
+			"file": "src/js/temp.js",
+			"file_size": 250,
+			"file_write_time": 130265764320000000,
+			"settings":
+			{
+				"buffer_size": 810,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -87,7 +138,10 @@
 	},
 	"console":
 	{
-		"height": 167.0
+		"height": 167.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -100,6 +154,19 @@
 	},
 	"file_history":
 	[
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/collections/tasks.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/models/task.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/views/app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/views/task.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/index.html",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/css/main.css",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/exercise_01.php",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/backbonejs.php",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/js/temp.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercise_01.php",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/exercise_01.html",
+		"/Users/antoniopierro/Sites/unica/meccanica.html",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/index.html",
 		"/Users/antoniopierro/Sites/javascript-unit-testing-lecture/javascript-unit-testing-lecture.sublime-workspace",
 		"/Users/antoniopierro/Sites/javascript-unit-testing-lecture/assets/html/backbonejs.php",
@@ -140,9 +207,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises",
 			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/public",
 			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/views",
 			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/public",
@@ -154,6 +222,38 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"our collecti",
+			"MIX BACKBONE.EVENTS INTO A",
+			"is.el).append(\"Bonjour tout le mond",
+			"OUR TOUT LE MO",
+			"r template = Mustache.co",
+			"jquery",
+			"localstora",
+			"on.('add",
+			"el",
+			"addFriendLi",
+			"input",
+			"template",
+			"item-template",
+			"addOne",
+			"todo-list",
+			"TodoView",
+			"item-template",
+			"header",
+			"Todos",
+			"app",
+			"gt",
+			"include",
+			"aper.css",
+			"consol",
+			"a Todo",
+			"a Todo model",
+			"a Todo model to des",
+			"DÈLE EN DÉT",
+			"ese types of applications typ",
+			"Todos",
+			"Vue en d",
+			"dp",
 			"data = \"Bonjour tout le mond",
 			"reference",
 			"slides",
@@ -181,6 +281,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Tasks"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -191,14 +292,153 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/html/backbonejs.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 42715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15304,
+								15304
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 7133.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/html/marionette.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3648,
+								3648
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1566.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/exercises/view_01/test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 754,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								745,
+								735
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/exercises/view_01/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 569,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								505,
+								505
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/js/temp.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								440,
+								440
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -227,9 +467,10 @@
 		]
 	},
 	"menu_visible": true,
+	"project": "backbonejs-requirejs-lecture.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -260,10 +501,24 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 178.0,
-	"status_bar_visible": true
+	"side_bar_width": 320.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
