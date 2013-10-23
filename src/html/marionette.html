@@ -27,7 +27,7 @@
 			<li>Without using Marionettejs I should write the View in this way:<pre><code>var MyView = Backbone.View.extend({ 
      template: $('#my-view-template').html(),
      render: function(){
-         var compiledTemplate = _.template(this.template);
+         var compiledTemplate = Mustache.compile(this.template);
          var data = this.model.toJSON(); 
          var html = compiledTemplate(data);
          this.$el.html(html); 
@@ -44,6 +44,75 @@ var data = this.model.toJSON();
 var html = compiledTemplate(data);
 // populate the view with the rendered html</code></pre>		 
 		</aside>
+	</section>
+	<section>
+		<h2>Exercice 1</h2>
+		<ul>
+			<li>Render a Model in by using Backbone.Marionette.ItemView</li>
+			<ul>
+				<li>Include in you html file the Marinette library<pre><code>&lt;script src="./bower_comp/marionette/lib/backbone.marionette.js">&lt;/script></code></pre></li>
+				<li>Marionette assumes the use of UnderscoreJS templates by default. <pre><code>Backbone.Marionette.Renderer.render = function(template, data){	
+  	return Mustache.to_html(template, data);
+}</code></pre></li>
+			</ul>
+		</ul>
+	</section>
+	<section>
+		<h2>Solution 1</h2>
+		<pre><code>
+var MyView = Marionette.ItemView.extend({ 
+	template: $('#my-view-template').html()
+});
+
+var myView = new MyView({model: myModel});
+myView.render(); 
+$('#my-view-template').html(myView.el);
+		</code></pre>
+	</section>
+	<section>
+		<h2>CompositeView</h2>
+		<ul>
+			<li>The idea behind a CompositeView is that it represents a visualization of a composite or hierarchical structure of leaves (or nodes) and branches.</li>
+			<li>The same CompositeView type will be used to render each item in a collection that is handled by the composite view.</li>
+			<pre><code>var MyView = Marionette.ItemView.extend({ 
+	template: $('#my-view-template').html()
+});
+
+var MyCompView = Backbone.Marionette.CompositeView.extend({
+	itemView : MyView
+});
+
+var myView = new MyCompView({collection: myCollection});</code></pre>
+		</ul>
+	</section>
+	<section>
+		<h2>Exercice 2</h2>
+		<ul>
+			<li>Render a Collection by using Backbone.Marionette.ItemView and Backbone.Marionette.CompositeView</li>
+			<li>Implement a method able to get a particular attribute when I click on a specific item.</li>
+		</ul>
+	</section>
+		<section>
+		<h2>Solution 2</h2>
+		<pre>
+			<code>var MyView = Marionette.ItemView.extend({ 
+	template: $('#my-view-template').html(),
+	events: {
+		'click': 'get_email'
+	},
+	get_email: function () {
+         console.log(this.model.get('email'));
+     }
+});
+
+var MyCompView = Backbone.Marionette.CompositeView.extend({
+	itemView : MyView
+});
+
+var myView = new MyCompView({collection: myCollection});
+myView.render(); 
+$('#my-view-template').html(myView.el);</code>
+		</pre>
 	</section>
 </section>
 
@@ -156,6 +225,7 @@ The next time we call the show method of the region, the region remembers that i
 <section>
 	<h2>References</h2>
 	<ul>
+		<li><a href="http://lostechies.com/derickbailey/2012/06/13/why-should-i-use-backbone-marionette-instead-of-%E2%80%A6/">Why Should I Use Backbone.Marionette Instead Of … ?</li>
 		<li><a href="http://marionettejs.com/">marionettejs</a></li>
 		<li><a href="https://vickev.com/#!/article/write-less-with-marionette-js">Write less with Marionette.js</a></li>
 		<li><a href="http://www.jeromesteunou.net/structurer-son-app-backbone.js-marionette.js-fr.html">Structurer son application Backbone.js / Marionette.js</a></li>

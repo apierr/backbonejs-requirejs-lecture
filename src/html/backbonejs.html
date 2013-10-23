@@ -6,7 +6,7 @@
 		<small>Created by <a href="#">Antonio Pierro</a> / <a href="http://twitter.com/antonio_pierro_">@antonio_pierro_</a></small>
 	</p>
 </section>
-<!--SLIDE1-->
+<!-- MVC Framework -->
 <section>
 	<section>
 	<h2>What Is MVC?</h2>
@@ -71,30 +71,44 @@ window.onmousedown = C.handleOnLoad;</code></pre>
 </section>
 
 <section>
+    <section><h2>MV* framework for client-facing JavaScrip</h2>
+    	<ul>
+    		<li>Backbone.js</li>
+    		<li>Angular.js</li>
+    		<li>Ember</li>
+    		<li>Spine</li>
+    		<li>CANjs</li>
+    		<li>JavaScriptMVC</li>
+    	</ul>
+    </section>
+
 	<section>
 		<h2>What is Backbonejs?</h2>
 		<ul>
 			<li><em>BackboneJS</em> is a Model-View-Controller (MVC) framework for client-facing JavaScript.</li>
 			<li>Backbone aims to solve the code coupling problem by providing a model-view framework with templates that separate programming concerns</li>
-			<li>It isn’t possible to talk about Backbone without also discussing Underscore.js, Backbone’s prerequisite helper library.</li>
+			<li>It isn't possible to talk about Backbone without also discussing Underscore.js, Backbone’s prerequisite helper library.</li>
 		</ul>
 	</section>
 	<section>
-		<h2>"Bonjour tout le monde" en modèle Backbone.js</h2>
-		<pre><code>(function($){
-     var AppView = Backbone.View.extend({    
-         el: $('body'),
-         render: function(){
-             $(this.el).append("Bonjour tout le monde");
-         },
-         initialize: function(){
-             _.bindAll(this, 'render');           
-             this.render();
-         },
-     });
-     var appView = new AppView();      
- })(jQuery);</code></pre>
+		<h2>Backbone & Underscore</h2>
+		<ul>
+			<li>Underscore, a library of useful functions:</li>
+			<pre><code>// On collections:
+_.each(coll, iterator); _.find(coll, iterator); // etc
+// On arrays
+_.flatten(arr), _.union(*arrs), _.uniq(arr), // etc
+// On functions
+_.bind(func, obj), _.throttle(func, wait), debounce(func, wait, true) // etc</code></pre>
+		
+		<li>All collection functions work on BackboneCollections:<pre><code>BackboneCollection.each(iterator);
+BackboneCollection.find(iterator);
+// etc</code></pre><pre><code>bookCollection.each(function(book) {
+  console.log(book.get("title"));
+});</code></pre></li></ul>
+		<aside class="notes">http://jsfiddle.net/amyseqmedia/dD99u/37/</aside>
 	</section>
+
 </section>
 
 <section>
@@ -135,7 +149,12 @@ window.onmousedown = C.handleOnLoad;</code></pre>
 
 </section>
 
-<!-- **************** THE BACKBONE MODEL ******************** !-->
+
+
+
+<!-- ******************************************************************************
+******************************** THE BACKBONE MODEL ******************************** 
+****************************************************************************** !-->
 <section>
 	<section><h2>Backbone Model</h2>
 	<ul>
@@ -282,150 +301,143 @@ var myModel = new MyModel({name:'Antonio', age: 36, over_18: null});
 	</section>
 </section>
 
-<!-- **************** THE BACKBONE VIEW ******************** !-->
+<!-- ******************************************************************************
+******************************* Backbone Backend *******************************
+******************************************************************************-->
+
 <section>
-	<section>
-		<h2>Backbone View</h2>
-		<ul>
-			<li>Views represent a display of data within a model, usually providing different information depending upon the context needed.</li>
-			<li>Views in Backbone don’t contain the markup for your application, but rather they are there to support models by defining the logic for how they should be represented to the user. (This is usually achieved using JavaScript templating (e.g. Mustache, jQuery-tmpl, etc.).)</li>
+<section>
+	<h2>The Backbone Backend</h2>
+	<ul>
+	<li>Backbone.sync is the function that Backbone calls every time it attempts 
+	to read or save a model to the server. </li>
+	<li>The sync method is called with three parameters:
+	<ul>
+		<li>method: One of create, update, delete, read</li>
+		<li>model: The Backbone model object</li>
+		<li>options: May include success and error methods</li>
 		</ul>
-		<aside class="notes"><ul>
-		<li>Les vues font la liaison entre les modèles et le DOM. </li>
-		<li>Elles mettent à jour le code HTML en fonction des modifications des modèles et, dans l’autre sens, peuvent gérer les événements du DOM;</li>
-		</ul></aside>
-	</section>
-
-<section>
-	<h2>Creating new views</h2>
-	<ul>
-		<li>To create a new View, simply extend Backbone.View</li>
-		<pre><code>var MyView = Backbone.View.extend({});
-
-var myView = new MyView();
-
-console.log(myView.el);</code></pre>
-	<li>What is el? el is basically a reference to a DOM element and all views must have one. </li>
+	</li>
 	</ul>
-	<aside class="notes">	<h2>Vue en détail: création</h2>
-	<ul><li>Les Vues peuvent être créés par:<pre><code>var MyView = Backbone.View.extend({
+
+
+</section>
+
+
+<section><h2>The Backbone Backend: (Model)</h2>
+	<pre><code>var BookModel = Backbone.Model.extend(
+  urlRoot: "/api/books",
+  // ...
 });
-var myView = new MyView();
-console.log(myView.el);
-	</code></pre></li>
-	<li><strong>el</strong> is basically a reference to a DOM element and all views must have one.</li></ul></aside>
+
+var book = new BookModel({id: 12});
+book.fetch();</code></pre>
+
+<pre><code>HTTP GET /api/books/12
+{id: 12,
+ title: 'Robot Dreams',
+ author: 'Isaac Asimov',
+ owned: false
+}</code></pre>
+<pre><code>book.markAsOwned();
+book.save();</code></pre>
+<pre><code>HTTP PUT /api/books/12
+{id: 12,
+ title: 'Robot Dreams',
+ author: 'Isaac Asimov',
+ owned: true
+}</code></pre></li></ul>
+	<aside class="notes">By default, it uses jQuery.ajax to make a RESTful JSON request and returns a jqXHR. You can override it in order to use a different persistence strategy, such as WebSockets, XML transport, or Local Storage.</aside>
 </section>
 
 <section>
-<h2>Backbone View: tagName, id and className</h2>
-<ul><li>If you want to create a new element for your view,<br>set any combination of the following view’s properties: <br>tagName, id and className<pre>
-<code>var MyView = Backbone.View.extend({
-     tagName: 'ul', // required, but defaults to 'div' if not set
-     className: 'container', // optional
-     id: 'todos' // optional
-});
-var myView = new MyView();
-console.log(myView.el);
-</code>
-</pre></li>
-</section>
-
-<section>
-	<h2>Backbone View: template</h2>
-	<ul>
-		<li>
-			It's convenient to define a template file to use on your view:s
-<pre><code>//template file
-<script type="text/template" id="form-tpl">
-    <label>Name:</label>
-    <input type="text" name="name" value="<%= name %>">
-    <label>Age:</label>
-    <input type="text" name="age" value="<%= age %>">
-</script>
-<div id="form"></div>
-</code></pre>
-<pre><code>var MyView = Backbone.View.extend({
-     el: "#form",
-     render: function() {
-         var html = _.template($('#form-tpl').html(), {age:12, name:'ciao'});
-         this.$el.html(html);
-    }
+	<h2>The Backbone Backend: (Collection)</h2>
+	<pre><code>var BookCollection = Backbone.Collection.extend({
+  url: "/api/books",
+  // ...
 });</code></pre>
-</li>
-<li>You can pass the model to the istance view:<pre><code>myView = new MyView({model: myModel});</code></pre></li>
+<pre><code>var myBooks = new BookCollection();
+myBooks.fetch();</code></pre>
+<pre><code>HTTP GET /api/books
+[{id: 12,
+ title: 'The Naked Sun',
+ author: 'Isaac Asimov'
+}, ...
+]</code></pre>
+<pre><code>myBooks.create(new BookModel({title: 'Foundation',
+                         author: 'Isaac Asimov'}));
+
+                         HTTP POST /api/books
+{title: 'Foundation', author: 'Isaac Asimov'}</code></pre>
+<aside class="notes"><pre><code>    'create': 'POST',
+    'update': 'PUT',
+    'patch':  'PATCH',
+    'delete': 'DELETE',
+    'read':   'GET'</code></pre></aside>
+</section>
+
+<section>
+	<h2>Override Backbone.sync</h2>
+	<ul>
+		<li>You can override this function to change the manner in which Backbone persists models to the server. </li>
+		<li>There are quite a few sync implementations out there:
+		<ul>
+			<li>Backbone localStorage</li>
+			<li>Backbone offline</li>
+			<li>Backbone Redis</li>
+			<li>backbone-parse</li>
+			<li>backbone-websql</li>
+			<li>Backbone Caching Sync</li>
+		</ul></li>
 	</ul>
 </section>
 
-<section><h2>Backbone View: Exercice 1</h2>
+<section><h2>localStorage usage</h2>
 <ul>
-	<li>Create a web page that can be run directly in a web browser. <ul>
-		<li>Before any coding can begin, the jQuery, Underscore, and Backbone libraries are included within the page’s head;</li>
-	</ul></li>
-	
-	<li>Create a CertificateView class, which is a placeholder for a birth certificate (uses Backbone’s extend method to create a prototype chain)</li>
+	<li>Include Backbone.localStorage after having included jQuery and Backbone.js:
+	<pre><code>&lt;script type="text/javascript" src="jquery.js">&lt;/script>
+&lt;script type="text/javascript" src="backbone.js">&lt;/script>
+&lt;script type="text/javascript" src="backbone.localStorage.js">&lt;/script></code></pre></li>
+<li>Create your model like so:<pre><code>var SomeModel = Backbone.Model.extend({
+
+  localStorage: new Backbone.LocalStorage("SomeCollection"), // Unique name within your app.
+
+  // ... everything else is normal.
+
+});</code></pre></li>
+</ul></section>
+
+
+	<section><h2>Backbone Model: Exercice 1</h2>
 	<ul>
-		<li>The view will have two custom functions: 
+		<li>Write a task model with the following feature:
 		<ul>
-		<li><em>initialize</em>: Executed when a new instance of the view is created; in this case, the desire is for the view to render its contents immediately</li>
-		<li><em>render</em>: Draws the contents of the view to the target element as described next. You specifically instruct the view to render itself inside the div whose ID is certificate</li>
-		</ul>
-		</li>
-	</ul>
-</ul>
+			<li>having two attributes: title (string) and completed (boolean)</li>
+			<li>save all of the task items under the `"tasks"` namespace by using Backbone.LocalStorage</li>
+			<li>have a method wich is able to toggle the "completed" state of this task item.</li>
+		</ul></li>
+		<li>How should it work:
+		<pre><code>task.attributes; //{title: "", completed: false}
+task.toggle();
+task.attributes; //{title: "", completed: true}</code></pre></li>
+	</ul></section>
 
-	</section>
-<section><h2>Backbone View: Solution 1</h2>
-<pre><code>&lt;div id="certificate"&gt;&lt;/div&gt;
-&lt;script type="text/javascript"&gt; 
-CertificateView = Backbone.View.extend({
-    initialize: function() { 
-    	this.render();
+		<section><h2>Backbone Model: Solution 1</h2>
+		<pre><code>Task = Backbone.Model.extend({
+    defaults: {
+        title: '',
+        completed: false 
     },
-    render: function() {
-        $(this.el).html("&lt;h1&gt;Guy Incognito&lt;/h1&gt;&ls;p&gt;DOB: March 2, 1967&lt;/p&gt;");
+
+    localStorage: new Backbone.LocalStorage('tasks-backbone'),
+
+    toggle: function() { 
+        this.save({
+            completed: !this.get('completed') 
+        });
     } 
-});
-var certificate_view = new CertificateView({ el: $("#certificate")}); 
-</script></code></pre>
-</section>
-
-
-
-<section><h2>Backbone View: Exercice 2</h2>
-<ul><li>Create a model and a view class.</li>
-<li>Create an instance of model and view</li>
-<li>Create a template</li>
-<li>Use all together to create an app able to render the model in the view</li></ul></section>
-
-<section><h2>Backbone View: <a target="_" href="http://jsfiddle.net/CX3ud/29/">Solution 2</a></h2>
-<pre><code>&lt;script type="text/template" id="form-tpl"&gt;
-    <label>Name:</label>
-    <input type="text" name="name" value="<%= name %>">
-    <label>Age:</label>
-    <input type="text" name="age" value="<%= age %>">
-&lt;/script&gt;
-<div id="form"></div></code></pre>
-<pre><code>var MyModel = Backbone.Model.extend({});
-var MyView = Backbone.View.extend({
-    el: "#form",
-    render: function() {
-        var html = _.template($('#form-tpl').html(), this.model.toJSON());
-        this.$el.html(html);
-    }
-});
-
-$(function() {
-    var person = new MyModel({
-        name: 'Thomas',
-        age: 37
-    }),
-    app = new MyView({model: person});
-    app.render();
 });</code></pre>
-</section>
-
-
-
+	</section>
 </section>
 
 <!-- 
@@ -527,6 +539,7 @@ console.log('Collection size: ' + myCollection.length);</code></pre></li>
 </ul>
 </section>
 
+<!--
 <section><h2>Backbone collection: Excercise 1</h2>
 <ul>
 <li>Explain what is the difference betwwen these two codes and why the first one is broken:
@@ -566,8 +579,470 @@ var MyCollection = Backbone.Collection.extend({
   <li>If you don't use new operator, then "parent"
 will refer to Backbone.Collection and since you can only call .apply on functions, the code will break.</li>
     </ul></section>
+-->
+
+    	<section><h2>Backbone Collection: Exercice 2</h2>
+	<ul>
+		<li>Write a task coleection with the following feature:
+		<ul>
+			<li>is backed by *localStorage* instead of a remote server.</li>
+			<li>have a reference to the task model (3M exercise)).</li>
+			<li>have a method wich is able to filter down the list of all tasks that are finished.</li>
+			<li>have a method wich is able to filter down the list of all tasks that are still not finished.</li>
+		</ul></li>
+		<li>How should it work:
+		<pre><code>var tasks = new Tasks([
+  {name: "first", completed: true},
+  {name: "second", completed: false},
+  {name: "third", completed: true}
+]);
+
+(tasks.completed()).length // 2 
+(tasks.remaining()).length // 1</code></pre></li>
+	</ul></section>
+
+		<section><h2>Backbone Collection: Solution 2</h2>
+		<pre><code>var Tasks = Backbone.Collection.extend({
+
+	model: Task,
+
+	localStorage: new Backbone.LocalStorage('tasks-backbone'),
+
+	completed: function() {
+		return this.filter(function( task ) {
+			return task.get('completed'); });
+	},
+    
+	remaining: function() {
+		return this.without.apply( this, this.completed() );
+	},
+});</code></pre>
+	</section>
 
 </section>
+
+
+<!-- 
+****************************************************************************
+**************** THE BACKBONE EVENTS ***************************************
+****************************************************************************
+ !-->
+
+ <section>
+ 	<section><h2>Backbone Events</h2>
+ 	<ul>
+ 		<li>Backbone.Events is mixed into the other Backbone "classes", including:
+ 			<ul>
+ 				<li>Backbone.Model</li>
+ 				<li>Backbone.Collection</li>
+ 				<li>Backbone.Router</li>
+ 				<li>Backbone.History</li>
+ 				<li>Backbone.View</li>
+ 			</ul>
+ 		</li>
+ 	</ul>
+<aside class="notes">Observer pattern (nowadays commonly implemented as a Publish/Subscribe system) </aside>
+ 	</section>
+ 	<section><h2>Mix Backbone.Events into any object </h2>
+ 		<ul>
+ 			<li>Backbone.Events also has the ability to give any object 
+ 	a way to bind and trigger custom events<pre><code>var ourObject = {}; 
+// Mixin
+_.extend(ourObject, Backbone.Events);
+
+function dancing (msg) { 
+     console.log("We started " + msg); 
+}
+// Add namespaced custom events
+ourObject.on("dance:tap", dancing); ourObject.on("dance:break", dancing);
+// Trigger the custom events
+ourObject.trigger("dance:tap", "tap dancing. Yeah!"); 
+ourObject.trigger("dance:break", "break dancing. Yeah!");
+
+// Removes event bound to the object
+ourObject.off("dance:tap");
+
+// Passing multiple arguments to multiple events
+ourObject.trigger("dance jump skip", {duration: "15 minutes", action: 'on fire'});</code></pre></li>
+ 		</ul>
+ 		<aside class="notes">_.extend(destination, *sources) <br>
+Copy all of the properties in the source objects over to the destination object, and return the destination object. It's in-order, so the last source will override properties of the same name in previous arguments.
+<pre><code>_.extend({name: 'moe'}, {age: 50});
+=> {name: 'moe', age: 50}</code></pre>
+</aside>
+ 	</section>
+ </section>
+
+<!-- **************** THE BACKBONE VIEW ******************** !-->
+<section>
+
+	<section>
+		<h2>Backbone View</h2>
+		<ul>
+			<li>Views represent a display of data within a model, usually providing different information depending upon the context needed.</li>
+			<li>Views in Backbone don’t contain the markup for your application, but rather they are there to support models by defining the logic for how they should be represented to the user. (This is usually achieved using JavaScript templating (e.g. Mustache, jQuery-tmpl, etc.).)</li>
+		</ul>
+		<aside class="notes"><ul>
+		<li>Les vues font la liaison entre les modèles et le DOM. </li>
+		<li>Elles mettent à jour le code HTML en fonction des modifications des modèles et, dans l’autre sens, peuvent gérer les événements du DOM;</li>
+		</ul></aside>
+	</section>
+
+
+<section>
+	<h2>Creating new views</h2>
+	<ul>
+		<li>To create a new View, simply extend Backbone.View</li>
+		<pre><code>var MyView = Backbone.View.extend({});
+
+var myView = new MyView();
+
+console.log(myView.el);</code></pre>
+	<li>What is el? el is basically a reference to a DOM element and all views must have one. </li>
+	</ul>
+	<aside class="notes">	<h2>Vue en détail: création</h2>
+	<ul><li>Les Vues peuvent être créés par:<pre><code>var MyView = Backbone.View.extend({
+});
+var myView = new MyView();
+console.log(myView.el);
+	</code></pre></li>
+	<li><strong>el</strong> is basically a reference to a DOM element and all views must have one.</li></ul></aside>
+</section>
+
+	<section>
+		<h2>Backbone & jQuery</h2>
+		<ul>
+			<li>Standalone jQuery:<pre><code>$('body').append('<br>');
+$('.course-list').html('Best Course Ever');</code></pre></li>
+<li>Every Backbone.View has a $el and a $() method:<pre><code>var View = Backbone.View.extend({
+   el: 'body',
+   render: function() {
+    
+     this.$el.append('<br>');
+     this.$el.find('.coursera-listing').html('Best Course Ever');
+     // or shorter:
+     this.$('.coursera-listing').html('Best Course Ever');
+   }
+})</code></pre></li>
+		</ul>
+		<aside class="notes"> jQuery, Zepto, Ender<pre><code>view.$
+function (selector) {
+      return this.$el.find(selector);
+    }</code></pre></aside>
+	</section>
+
+		<section>
+		<h2>"Bonjour tout le monde" en modèle Backbone.js</h2>
+		<pre><code>(function($){
+     var AppView = Backbone.View.extend({    
+         el: $('body'),
+         render: function(){
+             $(this.el).append("Bonjour tout le monde");
+         },
+         initialize: function(){
+             _.bindAll(this, 'render');           
+             this.render();
+         },
+     });
+     var appView = new AppView();      
+ })(jQuery);</code></pre>
+	</section>
+
+<section>
+<h2>Backbone View: tagName, id and className</h2>
+<ul><li>If you want to create a new element for your view,<br>set any combination of the following view’s properties: <br>tagName, id and className<pre>
+<code>var MyView = Backbone.View.extend({
+     tagName: 'ul', // required, but defaults to 'div' if not set
+     className: 'container', // optional
+     id: 'todos' // optional
+});
+var myView = new MyView();
+console.log(myView.el);
+</code>
+</pre></li>
+</section>
+
+<section>
+	<h2>Backbone View: template</h2>
+	<ul>
+		<li>
+			It's convenient to define a template file to use on your view:s
+<pre><code>//template file
+<script type="text/template" id="form-tpl">
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= name %>">
+    <label>Age:</label>
+    <input type="text" name="age" value="<%= age %>">
+</script>
+<div id="form"></div>
+</code></pre>
+<pre><code>var MyView = Backbone.View.extend({
+     el: "#form",
+     render: function() {
+         var html = _.template($('#form-tpl').html(), {age:12, name:'ciao'});
+         this.$el.html(html);
+    }
+});</code></pre>
+</li>
+<li>You can pass the model to the istance view:<pre><code>myView = new MyView({model: myModel});</code></pre></li>
+	</ul>
+</section>
+
+<section>
+	<h2>Mustache</h2>
+	<ul>
+		<li>Mustache is an HTML templating library. To use it:</li>
+		<ul>
+			<li>Make a template file:
+			<pre><code>&lt;div id="id="book-template"">
+     &lt;strong>{{ book.title }}&lt;/strong> 
+     was written by {{ book.author }}
+&lt;/div></code></pre>
+			</li>
+			<li>Compile the template and render it with your data:<pre><code>var source   = $("#book-template").html();
+var template = Mustache.compile(source);
+var myBook = {
+     "title": "Robot Dreams", 
+     "author": "Isaac Asimov"
+};
+var rendered = template({book: myBook});</code></pre></li>
+		</ul>
+	</ul>
+</section>
+
+<section>
+	<h2>Backbone and Mustache</h2>
+	<ul><li>The HTML file<pre><code>&lt;div id="books-template">
+     {{#books}}
+     <b>{{name}}</b>
+     {{/books}}
+&lt;/div></code></pre></li>
+<li>In the JS view:<pre><code>var BookShelfView = Backbone.View.extend({
+  render: function() {
+    // Compile the template
+    var template = Mustache.compile(
+         $("#books-template").html());
+    // Render the template with the current collection data
+    var rendered = template({
+         books: this.collection.toJSON()});
+    // Append the rendered HTML to the current view's element
+    this.$el.append(rendered);
+
+    return this;
+  }
+});</code></pre></li></ul>
+<aside class="notes"><pre><code>{
+  "books": [
+    { "name": "Moe" },
+    { "name": "Larry" },
+    { "name": "Curly" }
+  ]
+}</code></pre></aside>
+</section>
+
+<section>
+	<h2>Models & Views</h2>
+	<ul>
+		<li>Putting them together:<pre><code>var booksJSON = [
+     {title: 'I, Robot', author: 'Isaac Asimov'},
+     {title: 'Robot Dreams', author: 'Isaac Asimov'}
+];
+
+var books = new BookCollection(booksJSON);
+
+var view = new BookShelfView(
+     {collection: books}
+);
+
+$('body').append(view.render().$el);</code></pre></li>
+	</ul>
+</section>
+
+<section>
+	<h2>Nested Views</h2>
+	<ul><li>Book Item View:<pre><code>var BookItemView = Backbone.View.extend({
+  className: 'book',
+  tagName: 'li',
+  render: function() {
+    var bookLink = $('&lt;a>').attr('href', this.model.get('url'));
+    var bookCover = $('&lt;img>').attr('src', this.model.get('thumbnail'));
+    bookLink.append(bookCover);
+    this.$el.append(bookLink);
+    return this;
+  }
+});
+var itemView = new BookItemView({model: bookModel});</code></pre>
+</code></pre>
+</li><li>Book List View:
+<pre><code>var BookShelfView = Backbone.View.extend({
+  className: 'books',
+  tagName: 'ol',
+  render: function(eventName) {
+    this.collection.each(function (book) {
+      var bookItemView = new BookItemView({model: book});
+      this.$el.append(bookItemView.render().$el);
+    }, this);
+    return this;
+  }
+});
+
+var shelfView = new BookShelfView({collection: bookCollection});</code></pre></li></ul>
+<aside class="notes">ogni book concorder avec a div</aside>
+</section>
+
+<section><h2>Views + DOM Events</h2>
+<ul><li>Set callbacks, where this.events is a hash of {"event selector": "callback"}<pre><code>var BookItemView = Backbone.View.extend({
+  events: {
+    'mouseover img': 'showReview',
+    'mouseout img': 'hideReview'
+  },
+  hideReview: function() {
+    this.$('.book-review').remove();
+  }
+});
+</code></pre></li>
+<li><a href="http://backbonejs.org/#Events-catalog">Backbone's built in events</a><pre><code>"add"    	when a model is added to a collection.
+"remove" when a model is removed from a collection.
+"reset"  when the collection's entire contents have been replaced.
+"sort"   when the collection has been re-sorted.
+"change:[attribute]" when a specific attribute has been updated.
+
+MyCollection.on( 'add', callback, this );</code></pre></li>
+</ul></section>
+
+<section><h2>Backbone View: Exercice 1</h2>
+<ul>
+	<li>Create a web page that can be run directly in a web browser. <ul>
+		<li>Before any coding can begin, the jQuery, Underscore, and Backbone libraries are included within the page’s head;</li>
+	</ul></li>
+	
+	<li>Create a CertificateView class, which is a placeholder for a birth certificate (uses Backbone’s extend method to create a prototype chain)</li>
+	<ul>
+		<li>The view will have two custom functions: 
+		<ul>
+		<li><em>initialize</em>: Executed when a new instance of the view is created; in this case, the desire is for the view to render its contents immediately</li>
+		<li><em>render</em>: Draws the contents of the view to the target element as described next. You specifically instruct the view to render itself inside the div whose ID is certificate</li>
+		</ul>
+		</li>
+	</ul>
+</ul>
+
+	</section>
+<section><h2>Backbone View: Solution 1</h2>
+<pre><code>&lt;div id="certificate"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt; 
+CertificateView = Backbone.View.extend({
+    initialize: function() { 
+    	this.render();
+    },
+    render: function() {
+        $(this.el).html("&lt;h1&gt;Guy Incognito&lt;/h1&gt;&ls;p&gt;DOB: March 2, 1967&lt;/p&gt;");
+    } 
+});
+var certificate_view = new CertificateView({ el: $("#certificate")}); 
+</script></code></pre>
+</section>
+
+
+
+<section><h2>Backbone View: Exercice 2</h2>
+<ul><li>Create a model and a view class.</li>
+<li>Create an instance of model and view</li>
+<li>Create a template</li>
+<li>Use all together to create an app able to render the model in the view</li></ul></section>
+
+<section><h2>Backbone View: <a target="_" href="http://jsfiddle.net/CX3ud/29/">Solution 2</a></h2>
+<pre><code>&lt;script type="text/template" id="form-tpl"&gt;
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= name %>">
+    <label>Age:</label>
+    <input type="text" name="age" value="<%= age %>">
+&lt;/script&gt;
+<div id="form"></div></code></pre>
+<pre><code>var MyModel = Backbone.Model.extend({});
+var MyView = Backbone.View.extend({
+    el: "#form",
+    render: function() {
+        var html = _.template($('#form-tpl').html(), this.model.toJSON());
+        this.$el.html(html);
+    }
+});
+
+$(function() {
+    var person = new MyModel({
+        name: 'Thomas',
+        age: 37
+    }),
+    app = new MyView({model: person});
+    app.render();
+});</code></pre>
+</section>
+
+<section>
+	<h2>Backbone View: Exercice 3</h2><h3>Friend list app</h3>
+	<ul>
+		<li>Create a model to hold friend attribute</li>
+		<li>Create a friends collection which holds our Friend models</li>
+		<li>Create a View with is able to add a new friend model to our friend collection and display it on the web page</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Backbone View: Solution 3</h2>
+	<pre><code>&lt;body>
+<input type="text" placeholder="Enter friend's name" id="input" />
+<button id="add-input">Add Friend</button>
+<ul id="friends-list">
+</ul>
+&lt;script type="text/javascript" src="test.js"></script>
+&lt;/body></code></pre>
+
+<pre><code>$(function() {
+	var Friend = Backbone.Model.extend();
+
+    var FriendList = Backbone.Collection.extend({
+    	model: Friend
+    });
+
+    var FriendView = Backbone.View.extend({
+
+        tagName: 'li',
+
+        friendslist: new FriendList,
+
+        events: {
+            'click #add-input':  'getFriend',
+        },
+
+        initialize: function() {
+            this.friendslist.on('add',this.render)
+            _.bindAll(this, 'render');
+        }, 
+
+        getFriend: function() {
+            var friend_name = $('#input').val();
+            this.friendslist.add( {name: friend_name} );
+        },
+
+        render: function(model) {
+            $("#friends-list").append("<li>"+ model.get("name")+"</li>");
+            console.log('rendered');
+        },
+
+    });
+
+    var view = new FriendView({el: 'body'});
+
+});</code></pre>
+</section>
+
+
+
+
+
+</section>
+
 
 <!-- 
 ****************************************************************************
@@ -666,7 +1141,13 @@ will refer to Backbone.Collection and since you can only call .apply on function
 	</section>
 
 <section><h2>Index</h2><ul>
-	<li>First, we'll set up the basic application dependencies: jQuery, Underscore, Backbone.js and the Backbone LocalStorage adapter.</li>
+	<li>First, we'll set up the basic application dependencies:
+	<ul>
+		<li>jQuery</li>
+		<li>Underscore</li>
+		<li>Backbone.js</li>
+		<li>Backbone.LocalStorage</li>
+	</ul>
 	</ul>
 	<aside class="notes">
 Comme vous le pouvez le voir, le contenu html de notre application sera englobé dans une div avec l’id «content », c’est surtout pour éviter d’écraser l’insertion des librairies ou autres codes importants comme les templates. C’est donc le sélecteur $(‘#content’) que l’on utilisera pour initier la base de notre application. Ensuite on inclut toutes les librairies dont Backbone JS a besoin pour fonctionner, là rien de bien méchant, attention cependant, jQuery et underscore.js doivent être inclus avant backbone.js.
