@@ -89,14 +89,7 @@ define(["app", "apps/contacts/list/list_view"], function(ContactManager, View){
                   });
 
                   view.on("form:submit", function(data){
-                    if(model.save(data)){
-                      childView.render();
-                      view.trigger("dialog:close");
-                      childView.flash("success");
-                    }
-                    else{
-                      view.triggerMethod("form:data:invalid", model.validationError);
-                    }
+                    console.log('I should save the data on the serve')
                   });
 
                   ContactManager.dialogRegion.show(view);
