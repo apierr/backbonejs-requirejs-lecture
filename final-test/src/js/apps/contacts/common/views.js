@@ -4,16 +4,6 @@ define(["app", "tpl!apps/contacts/common/templates/form.tpl", "backbone.syphon"]
     Views.Form = Marionette.ItemView.extend({
       template: formTpl,
 
-      events: {
-        "click button.js-submit": "submitClicked"
-      },
-
-      submitClicked: function(e){
-        e.preventDefault();
-        var data = Backbone.Syphon.serialize(this);
-        this.trigger("form:submit", data);
-      },
-
       onFormDataInvalid: function(errors){
         var $view = this.$el;
 
