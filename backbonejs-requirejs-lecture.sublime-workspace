@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"con",
+				"console"
+			],
+			[
 				"li",
 				"li	Tag"
 			],
@@ -52,45 +56,36 @@
 	"buffers":
 	[
 		{
-			"file": "src/html/backbonejs.html",
+			"file": "final-test/src/js/apps/contacts/show/templates/view.tpl",
 			"settings":
 			{
-				"buffer_size": 42715,
+				"buffer_size": 220,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/html/marionette.html",
+			"contents": "Searching 50 files for \"lateFunc = typeof templ\"\n\n0 matches across 0 files\n\n\nSearching 85 files for \"lateFunc = typeof templ\"\n\n/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/vendors/js/backbone.marionette.js:\n 1203    // custom rendering and template handling for all of Marionette.\n 1204    render: function(template, data){\n 1205:     var templateFunc = typeof template === 'function' ? template : Marionette.TemplateCache.get(template);\n 1206      return templateFunc(data);\n 1207    }\n\n1 match in 1 file\n",
 			"settings":
 			{
-				"buffer_size": 8643,
+				"buffer_size": 528,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "final-test/src/js/main.js",
+			"settings":
+			{
+				"buffer_size": 1660,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/exercises/view_01/test.js",
+			"file": "final-test/src/js/app.js",
 			"settings":
 			{
-				"buffer_size": 754,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/exercises/view_01/index.html",
-			"settings":
-			{
-				"buffer_size": 569,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "var Task = Backbone.Model.extend({\n	// Default attributes for the task\n	// and ensure that each task created has `title` and `completed` keys. \n	defaults: {\n		title: '',\n		completed: false \n	},\n	localStorage: new Backbone.LocalStorage('tasks-backbone'),\n    // Toggle the `completed` state of this todo item.\n	toggle: function() { \n		this.save({\n			completed: !this.get('completed') \n		});\n	} \n});\n\nvar Tasks = Backbone.Collection.extend({\n\n	model: Task,\n\n	localStorage: new Backbone.LocalStorage('tasks-backbone'),\n\n	completed: function() {\n		return this.filter(function( task ) {\n			return task.get('completed'); });\n	},\n    \n	remaining: function() {\n		return this.filter(function( task ) {\n			return !task.get('completed'); });\n	},\n});\n\n// Create our global collection of **Todos**.\napp.Tasks = new Tasks();",
-			"file": "src/js/temp.js",
-			"file_size": 250,
-			"file_write_time": 130265764320000000,
-			"settings":
-			{
-				"buffer_size": 810,
+				"buffer_size": 1306,
 				"line_ending": "Unix"
 			}
 		}
@@ -154,6 +149,69 @@
 	},
 	"file_history":
 	[
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/vendors/js/backbone.marionette.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/common/templates/loading.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/common/templates/form.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/main.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/header/list/templates/list_item.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/templates/list_item.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/index.html",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/contacts_app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/about/show/templates/message.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/config/storage/localstorage.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/common/views.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/templates/layout.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/templates/panel.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/list_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/new/new_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/show/templates/missing.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/show/show_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/header/list/templates/list.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/entities/common.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/list_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/show/show_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/templates/none.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list/templates/list.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/config/marionette/regions/dialog.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/edit/edit_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/about/show/show_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/about/show/show_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/about/about_app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/header/list/templates/list.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/header/list/list_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/show/show_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/show/show_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/show/templates/view.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/contacts_app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/list/list_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/show/templates/view.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/main.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/common/templates/form.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/header/header_app.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/header/list/list_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/common/templates/loading.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/about/show/show_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/config/storage/localstorage.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/list/templates/list_item.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/header/list/templates/list_item.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/config/marionette/regions/dialog.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/common/views.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/entities/common.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/entities/contact.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/edit/edit_controller.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/list/templates/layout.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/contacts/list/templates/list.tpl",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/r.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/apps/about/show/show_view.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/require_main.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/require_main.built.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js/build.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/js/temp.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/view_01/index.html",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/view_01/test.js",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/backbonejs.html",
+		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/marionette.html",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/collections/tasks.js",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/models/task.js",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises/backbone/js/views/app.js",
@@ -163,7 +221,6 @@
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/css/main.css",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/exercise_01.php",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/backbonejs.php",
-		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/js/temp.js",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercise_01.php",
 		"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/html/exercise_01.html",
 		"/Users/antoniopierro/Sites/unica/meccanica.html",
@@ -210,6 +267,37 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/about",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src/js/apps/contacts/list",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/src",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test/assets/js",
+			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/final-test",
 			"/Users/antoniopierro/Sites/backbonejs-requirejs-lecture/src/exercises",
 			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/public",
 			"/Users/antoniopierro/Sites/Leemon/src/Incenteev/WebBundle/Resources/views",
@@ -222,6 +310,68 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"before",
+			"lateFunc = typeof templ",
+			"{{= ",
+			"%>",
+			"<%",
+			"Router",
+			"Rote",
+			"filterContacts",
+			"criterion",
+			"js-filter-criterion",
+			"contact:delete",
+			"sole.log('sad')",
+			"onsol",
+			"onsole.log('co",
+			"onsole.log('contact', conta",
+			"contact:ed",
+			"contact:edit",
+			"    ContactManager.on(\"contact:edit\", function(id){\n      ContactManager.navigate(\"contacts/\" + id + \"/edit\");\n      API.editContact(id);\n    });",
+			"edit",
+			"router",
+			"itemview:contact:edit",
+			"contact:edit",
+			"executeAction",
+			"showContact",
+			"contact:show",
+			"console",
+			"js-show",
+			"submitClicked",
+			"childView",
+			"orm:submi",
+			"form:submit",
+			"js-submit",
+			"router",
+			"about:show",
+			"contact:show",
+			"js-show",
+			"model",
+			"childView",
+			"contact:delete",
+			"deleteClicked",
+			"contact:edit",
+			"contact:show",
+			"js-show",
+			"icon-eye-open",
+			"contact:new",
+			"trigger",
+			"icon-eye-open",
+			"assets",
+			"router",
+			"lass=\"nav-collapse colla",
+			"Router",
+			"Renderer.render",
+			"templateSettings",
+			".show",
+			"spine",
+			".show(",
+			".show",
+			".show(",
+			"wait",
+			"template",
+			"closeD",
+			"shim",
 			"our collecti",
 			"MIX BACKBONE.EVENTS INTO A",
 			"is.el).append(\"Bonjour tout le mond",
@@ -281,6 +431,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"{{",
+			"}}",
+			"{{",
+			"=\"<%= ",
 			"Tasks"
 		],
 		"reverse": false,
@@ -292,24 +446,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/html/backbonejs.html",
+					"file": "final-test/src/js/apps/contacts/show/templates/view.tpl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 42715,
+						"buffer_size": 220,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15304,
-								15304
+								189,
+								189
 							]
 						],
 						"settings":
@@ -317,118 +471,110 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 7133.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/html/marionette.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8643,
+						"buffer_size": 528,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										365,
+										388
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								3648,
-								3648
+								370,
+								370
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1566.0,
+						"translation.y": 72.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/exercises/view_01/test.js",
+					"file": "final-test/src/js/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 754,
+						"buffer_size": 1660,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								745,
-								735
+								1466,
+								1466
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 379.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/exercises/view_01/index.html",
+					"file": "final-test/src/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 569,
+						"buffer_size": 1306,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								505,
-								505
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/js/temp.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 810,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								440,
-								440
+								227,
+								227
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 35.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -503,11 +649,11 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 413.0
 	},
 	"settings":
 	{
@@ -516,7 +662,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 320.0,
+	"side_bar_width": 285.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
