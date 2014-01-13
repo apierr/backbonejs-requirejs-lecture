@@ -4,3 +4,6 @@
 	box-shadow: none;
 	max-width: 330px;
 }
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+	text-transform: none;
+}
