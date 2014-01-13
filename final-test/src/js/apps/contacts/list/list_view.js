@@ -17,6 +17,14 @@ define(["app",
 
     View.Panel = Marionette.ItemView.extend({
       template: panelTpl,
+      events: {
+         "submit #filter-form": "filterContacts"
+       },
+
+       filterContacts: function(e){
+        e.preventDefault();
+        this.trigger("contacts:filter", criterion);
+       },
 
       ui: {
         criterion: "input.js-filter-criterion"
