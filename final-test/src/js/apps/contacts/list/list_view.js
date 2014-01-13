@@ -17,23 +17,17 @@ define(["app",
 
     View.Panel = Marionette.ItemView.extend({
       template: panelTpl,
-
-      triggers: {
-        "click button.js-new": "contact:new"
-      },
-
       events: {
-        "submit #filter-form": "filterContacts"
-      },
+         "submit #filter-form": "filterContacts"
+       },
+
+       filterContacts: function(e){
+        e.preventDefault();
+        this.trigger("contacts:filter", criterion);
+       },
 
       ui: {
         criterion: "input.js-filter-criterion"
-      },
-
-      filterContacts: function(e){
-        e.preventDefault();
-        var criterion = this.$(".js-filter-criterion").val();
-        this.trigger("contacts:filter", criterion);
       },
 
       onSetFilterCriterion: function(criterion){
@@ -46,10 +40,7 @@ define(["app",
       template: listItemTpl,
 
       events: {
-        "click": "highlightName",
-        "click td a.js-show": "showClicked",
-        "click td a.js-edit": "editClicked",
-        "click button.js-delete": "deleteClicked"
+        "click": "highlightName"
       },
 
       flash: function(cssClass){
@@ -63,23 +54,6 @@ define(["app",
 
       highlightName: function(e){
         this.$el.toggleClass("warning");
-      },
-
-      showClicked: function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        this.trigger("contact:show", this.model);
-      },
-
-      editClicked: function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        this.trigger("contact:edit", this.model);
-      },
-
-      deleteClicked: function(e){
-        e.stopPropagation();
-        this.trigger("contact:delete", this.model);
       },
 
       remove: function(){

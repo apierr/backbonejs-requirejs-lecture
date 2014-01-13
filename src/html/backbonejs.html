@@ -99,14 +99,29 @@ _.each(coll, iterator); _.find(coll, iterator); // etc
 // On arrays
 _.flatten(arr), _.union(*arrs), _.uniq(arr), // etc
 // On functions
-_.bind(func, obj), _.throttle(func, wait), debounce(func, wait, true) // etc</code></pre>
+_.bind(func, obj), _.throttle(func, wait), _.debounce(func, wait, true) // etc</code></pre>
 		
-		<li>All collection functions work on BackboneCollections:<pre><code>BackboneCollection.each(iterator);
+		<li>All collection functions work on <a href="http://backbonejs.org/docs/backbone.html#section-112">Backbone.Collections</a>:<pre><code>BackboneCollection.each(iterator);
 BackboneCollection.find(iterator);
 // etc</code></pre><pre><code>bookCollection.each(function(book) {
   console.log(book.get("title"));
 });</code></pre></li></ul>
-		<aside class="notes">http://jsfiddle.net/amyseqmedia/dD99u/37/</aside>
+		<aside class="notes">
+		<pre>
+			<code>
+				var foo_t = _.throttle(function () {
+					console.log(Date.now())
+					}, 1500);
+				foo_t(); foo_t();
+
+				var foo_d = _.debounce(function () {
+					console.log(Date.now())
+					}, 1500)
+				foo_d(); foo_d();
+			</code>
+		</pre>
+		http://jsfiddle.net/amyseqmedia/dD99u/37/
+		</aside>
 	</section>
 
 </section>
@@ -237,14 +252,22 @@ myModel.toJSON() // get all of a model’s data attributes </code></pre>
 		<pre><code>myModel.set("title", "My new title."); 
 console.log('myModel title: ' + myModel.get('title'));</code></pre></li></ul></section>
 		<section><h2>Backbone Model: Listening for changes to your model</h2>
-		<ul><li>Modèle can have listeners bound to them which detect when their values change:
+		<ul><li>All attributes of a model can have listeners bound to them which detect when their values change:
 		<pre><code>var MyModel = Backbone.Model.extend({
      initialize: function() {
          this.on('change', function() {
-             console.log('- Values for this model have changed.');
+             console.log('Values for this model have changed.');
          });
      }
-});</code></pre> </li></ul>
+});</code></pre>
+		<pre><code>var MyModel = Backbone.Model.extend({
+     initialize: function() {
+         this.on('change:name', function() {
+             console.log('Value name for this model have changed.');
+         });
+     }
+});</code></pre>
+		</li></ul>
 	</section>
 
 	<section>
