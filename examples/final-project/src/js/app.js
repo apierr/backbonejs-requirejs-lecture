@@ -3,16 +3,21 @@
 	'use strict';
 
 	define([
-		'marionette'
-	], function (Marionette) {
+		'marionette',
+		'views/headerView'
+	], function (Marionette, HeaderView) {
 
-		var ContactManager = new Marionette.Application();
+		var contactManager = new Marionette.Application();
 
-		ContactManager.addRegions({
+		contactManager.addRegions({
 			headerRegion: '#header',
 			mainRegion: '#main'
 		});
 
-		return ContactManager;
+		contactManager.addInitializer(function () {
+			this.headerRegion.show(new HeaderView());
+		});
+
+		return contactManager;
 	});
 })();
