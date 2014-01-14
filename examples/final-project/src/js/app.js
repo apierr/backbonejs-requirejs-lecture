@@ -8,6 +8,11 @@
 
 		var ContactManager = new Marionette.Application();
 
+		ContactManager.addRegions({
+			headerRegion: '#header',
+			mainRegion: '#main'
+		});
+
 		return ContactManager;
 	});
 })();
