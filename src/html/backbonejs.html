@@ -158,7 +158,11 @@ BackboneCollection.find(iterator);
 	<li>Provide DOM, model and collection synchronization</li>
 </ul>
 <aside class="notes"><ul>
-	<li>Dans l'illustration suivante, le résultat n'est pas prévisible, du fait que vous ne pouvez savoir quand les Thread A et B s'exécutent. Dans l'hypothèse la plus simple ou les thread A et B s'exécutent une fois, l'ordre d'exécution des instructions peut être par exemple : Lire, Lire, Add, Add, Écrire, Écrire ou Lire, Add, Écrire, Lire, Add, Écrire. Le résultat dans ces deux hypothèses n'est pas le même puisqu'au final dans le second cas la variable est augmentée de 2 alors qu'elle n'est augmentée que de un dans le premier.</li>
+	<li>Découper les parties de vos application en vues qui géreront toute la logique de ces parties, la maintenance est beaucoup plus rapide par la suite.
+
+Délimiter facilement plusieurs états dans votre application grâce au routeur.
+
+Créer des vues qui écoutent sur ces modèles et qui se mettent à jour automatiquement si les modèles changent.</li>
 </ul></aside>
 </section>
 
