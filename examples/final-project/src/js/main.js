@@ -28,10 +28,11 @@
 	});
 
 	require([
-		'app'
-	], function (contactManager) {
+		'app',
+		'views/headerView'
+	], function (contactManager, HeaderView) {
 
-		console.log(contactManager);
+		contactManager.headerRegion.show(new HeaderView());
 
 	});
 
