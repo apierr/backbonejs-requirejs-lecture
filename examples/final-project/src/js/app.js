@@ -3,12 +3,10 @@
 	'use strict';
 
 	define([
-		'backbone'
-	], function (Backbone) {
+		'marionette'
+	], function (Marionette) {
 
-		var ContactManager = {};
-
-		console.log(Backbone);
+		var ContactManager = new Marionette.Application();
 
 		return ContactManager;
 	});

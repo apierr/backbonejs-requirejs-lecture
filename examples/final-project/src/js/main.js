@@ -7,16 +7,22 @@
 	requirejs.config({
 		urlArgs: 'bust=' + Date.now(),
 		paths: {
+			jquery: vendor_dir + 'jquery/jquery.min',
 			underscore: vendor_dir + 'underscore/underscore-min',
-			backbone: vendor_dir + 'backbone/backbone'
+			backbone: vendor_dir + 'backbone/backbone',
+			marionette: vendor_dir + 'marionette/backbone.marionette.min'
 		},
 		shim: {
 			underscore: {
 				exports: '_'
 			},
 			backbone: {
-				deps: ['underscore'],
+				deps: ['underscore', 'jquery'],
 				exports: 'Backbone'
+			},
+			marionette: {
+				deps: ['backbone'],
+				exports: 'Marionette'
 			}
 		}
 	});
