@@ -4,8 +4,9 @@
 
 	define([
 		'marionette',
-		'views/headerView'
-	], function (Marionette, HeaderView) {
+		'views/headerView',
+		'views/mainView'
+	], function (Marionette, HeaderView, MainView) {
 
 		var contactManager = new Marionette.Application();
 
@@ -16,6 +17,7 @@
 
 		contactManager.addInitializer(function () {
 			this.headerRegion.show(new HeaderView());
+			this.mainRegion.show(new MainView());
 		});
 
 		return contactManager;
