@@ -1,0 +1,14 @@
+{
+  "name": "bb-project",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "2.3.2",
+    "requirejs": "2.1.10",
+    "jquery": "latest",
+    "backbone": "latest",
+    "bootstrap": "1.1.0",
+    "backbone.localStorage": "latest",
+    "underscore": "latest"
+  },
+  "devDependencies": {}
+}
