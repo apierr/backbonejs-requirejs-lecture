@@ -10,7 +10,9 @@
 			jquery: vendor_dir + 'jquery/jquery.min',
 			underscore: vendor_dir + 'underscore/underscore-min',
 			backbone: vendor_dir + 'backbone/backbone',
-			marionette: vendor_dir + 'marionette/backbone.marionette.min'
+			marionette: vendor_dir + 'marionette/backbone.marionette',
+			text: vendor_dir + 'requirejs/text',
+			mustache: vendor_dir + 'mustache/mustache'
 		},
 		shim: {
 			underscore: {
@@ -23,13 +25,22 @@
 			marionette: {
 				deps: ['backbone'],
 				exports: 'Marionette'
+			},
+			mustache: {
+				exports: 'Mustache'
 			}
 		}
 	});
 
 	require([
-		'app'
-	], function (contactManager) {
+		'app',
+		'marionette',
+		'mustache'
+	], function (contactManager, Marionette, Mustache) {
+
+		Marionette.Renderer.render = function(template, data){
+            return Mustache.to_html(template, data);
+        }
 
 		contactManager.start();
 

@@ -3,17 +3,13 @@
 	'use strict';
 
 	define([
-		'backbone'
-	], function (Backbone) {
+		'marionette',
+		'text!../../templates/header.tpl'
+	], function (Marionette, HeaderView) {
 		
-		return  Backbone.View.extend({
+		return  Marionette.ItemView.extend({
 
-			render: function () {
-
-				this.$el.html('header');
-				
-				return this;
-			}
+			template: HeaderView
 
 		});
 
