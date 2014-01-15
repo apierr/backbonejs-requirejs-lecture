@@ -1,7 +1,16 @@
-<img src="{{ photo }}" alt="{{ name }}" />
-<h1>{{ name }}</h1>
-<div>{{ address }}</div>
-<dl>
-    <dt>Tel:</dt><dd>{{ tel }}</dd>
-    <dt>Email:</dt><dd><a href="mailto:{{ email }}">{{ email }}</a></dd>
-</dl>
+<td>{{ firstName }}</td>
+<td>{{ lastName }}</td>
+<td>
+  <a href="#contacts/<%= id %>/edit" class="btn btn-small">
+    <i class="icon-pencil"></i>
+      Edit
+  </a>
+  <button class="btn btn-small js-delete">
+    <i class="icon-remove"></i>
+    Delete
+  </button>
+  <button class="btn btn-small js-show">
+    <i class="icon-show"></i>
+    Show
+  </button>
+</td>
