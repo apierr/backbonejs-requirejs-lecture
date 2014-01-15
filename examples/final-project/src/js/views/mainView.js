@@ -16,9 +16,9 @@
 			template: mainTemplate,
 
 			collection: new Users([
-				{name: 'Tim', age: 5},
-				{name: 'Ida', age: 26},
-				{name: 'Rob', age: 55}
+				{firstName: 'Tim', lastName: 'surname'},
+				{firstName: 'Ida', lastName: 'surname'},
+				{firstName: 'Rob', lastName: 'surname'}
 			])
 
 		});
