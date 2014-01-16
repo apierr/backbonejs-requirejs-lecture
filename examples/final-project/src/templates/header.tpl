@@ -1,11 +1,10 @@
-<div class="topbar">
-	<div class="fill">
-		<div class="container">
-			<h3><a href="#">Project name</a></h3>
-			<ul>
-				<li class="active"><a href="#">Home</a></li>
+<div class="navbar-inner">  
+	<div class="container">    
+		<a class="brand" href="#contacts">Contact manager</a>
+		<div class="nav-collapse collapse">
+			<ul class="nav">
+				<li class="active"><a href="#contacts">Contacts</a></li>
 				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
 			</ul>
 		</div>
 	</div>

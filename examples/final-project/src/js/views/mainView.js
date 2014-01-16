@@ -11,15 +11,11 @@
 
 		return Marionette.CompositeView.extend({
 
+			itemViewContainer: 'tbody',
+
 			itemView: ItemUserView,
 
-			template: mainTemplate,
-
-			collection: new Users([
-				{firstName: 'Tim', lastName: 'surname'},
-				{firstName: 'Ida', lastName: 'surname'},
-				{firstName: 'Rob', lastName: 'surname'}
-			])
+			template: mainTemplate
 
 		});
 

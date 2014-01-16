@@ -9,6 +9,8 @@
 
 		return Marionette.ItemView.extend({
 
+			tagName: 'tr',
+
 			template: itemUserTemplate,
 
 		});

@@ -12,7 +12,8 @@
 			backbone: vendor_dir + 'backbone/backbone',
 			marionette: vendor_dir + 'marionette/backbone.marionette',
 			text: vendor_dir + 'requirejs/text',
-			mustache: vendor_dir + 'mustache/mustache'
+			mustache: vendor_dir + 'mustache/mustache',
+			localStorage: vendor_dir + 'backbone.localStorage/backbone.localStorage'
 		},
 		shim: {
 			underscore: {
@@ -28,7 +29,8 @@
 			},
 			mustache: {
 				exports: 'Mustache'
-			}
+			},
+			localStorage: ['backbone']
 		}
 	});
 
