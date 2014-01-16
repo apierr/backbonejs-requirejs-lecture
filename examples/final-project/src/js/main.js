@@ -13,7 +13,8 @@
 			marionette: vendor_dir + 'marionette/backbone.marionette',
 			text: vendor_dir + 'requirejs/text',
 			mustache: vendor_dir + 'mustache/mustache',
-			localStorage: vendor_dir + 'backbone.localStorage/backbone.localStorage'
+			localStorage: vendor_dir + 'backbone.localStorage/backbone.localStorage',
+			bootstrap: vendor_dir + 'bootstrap/bootstrap'
 		},
 		shim: {
 			underscore: {
@@ -30,7 +31,10 @@
 			mustache: {
 				exports: 'Mustache'
 			},
-			localStorage: ['backbone']
+			localStorage: ['backbone'],
+			bootstrap: {
+                deps: ['jquery']
+            }
 		}
 	});
 
