@@ -5,8 +5,9 @@
 	define([
 		'marionette',
 		'views/headerView',
-		'views/mainView'
-	], function (Marionette, HeaderView, MainView) {
+		'views/mainView',
+		'collections/users'
+	], function (Marionette, HeaderView, MainView, UserCollection) {
 
 		var contactManager = new Marionette.Application();
 
@@ -16,8 +17,16 @@
 		});
 
 		contactManager.addInitializer(function () {
-			this.headerRegion.show(new HeaderView());
-			this.mainRegion.show(new MainView());
+			contactManager.users = new UserCollection();
+			contactManager.users.fetch({
+				success: function () {
+					contactManager.headerRegion.show(new HeaderView());
+					contactManager.mainRegion.show(new MainView({
+						collection: contactManager.users
+					}));
+				}
+			});
+
 		});
 
 		return contactManager;
