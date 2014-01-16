@@ -6,14 +6,16 @@
 		'marionette',
 		'views/headerView',
 		'views/mainView',
-		'collections/users'
+		'collections/users',
+		'bootstrap'
 	], function (Marionette, HeaderView, MainView, UserCollection) {
 
 		var contactManager = new Marionette.Application();
 
 		contactManager.addRegions({
 			headerRegion: '#header',
-			mainRegion: '#main'
+			mainRegion: '#main',
+			modal: '#modal'
 		});
 
 		contactManager.addInitializer(function () {
@@ -27,6 +29,15 @@
 				}
 			});
 
+		});
+
+	    contactManager.vent.on('showModal', function (view) {
+	        var modal = contactManager.modal;
+
+	        modal.show(view);
+	        modal.$el.modal({
+				show: true
+	        });
 		});
 
 		return contactManager;

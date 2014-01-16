@@ -1,7 +1,7 @@
 <td>{{ firstName }}</td>
 <td>{{ lastName }}</td>
 <td>
-  <a href="#contacts/<%= id %>/edit" class="btn btn-small">
+  <a href="#" class="btn btn-small js-edit">
     <i class="icon-pencil"></i>
       Edit
   </a>
