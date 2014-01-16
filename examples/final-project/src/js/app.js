@@ -7,7 +7,7 @@
 		'views/headerView',
 		'views/mainView',
 		'collections/users',
-		'bootstrapModal'
+		'bootstrap'
 	], function (Marionette, HeaderView, MainView, UserCollection) {
 
 		var contactManager = new Marionette.Application();
