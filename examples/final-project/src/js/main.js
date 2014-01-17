@@ -14,7 +14,8 @@
 			text: vendor_dir + 'requirejs/text',
 			mustache: vendor_dir + 'mustache/mustache',
 			localStorage: vendor_dir + 'backbone.localStorage/backbone.localStorage',
-			bootstrap: vendor_dir + 'bootstrap/bootstrap'
+			bootstrap: vendor_dir + 'bootstrap/bootstrap',
+			backboneSyphon: vendor_dir + 'backbone/backbone.syphon'
 		},
 		shim: {
 			underscore: {
@@ -34,6 +35,9 @@
 			localStorage: ['backbone'],
 			bootstrap: {
                 deps: ['jquery']
+            },
+            backboneSyphon: {
+				deps: ['backbone']
             }
 		}
 	});
