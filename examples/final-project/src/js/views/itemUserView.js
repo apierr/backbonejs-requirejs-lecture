@@ -12,6 +12,7 @@
 
 			initialize: function () {
 				_.bindAll(this, 'showModal');
+				this.model.on('change', this.render, this);
 			},
 
 			tagName: 'tr',
