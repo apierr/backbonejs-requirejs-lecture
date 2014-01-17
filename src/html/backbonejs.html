@@ -455,7 +455,7 @@ task.attributes; //{title: "", completed: true}</code></pre></li>
     localStorage: new Backbone.LocalStorage('tasks-backbone'),
 
     toggle: function() { 
-        this.save({
+        this.set({
             completed: !this.get('completed') 
         });
     } 
@@ -526,7 +526,7 @@ console.log(myCollection);
 <section><h2>Backbone collection: Getters and Setters</h2>
 <ul>
 <li>Collection.get() accepts a single id as follows:<pre><code>var myModel2 = myCollection.get(2);</code></pre></li>
-<li>Backbone Collections don’t have setters as such, <br>
+<li>Backbone Collections don't have setters as such, <br>
 	but do support adding new models via <strong>.add()</strong><br>
 	and removing models via <strong>.remove()</strong>.</li>
 </ul>
@@ -609,9 +609,9 @@ will refer to Backbone.Collection and since you can only call .apply on function
 		<li>Write a task coleection with the following feature:
 		<ul>
 			<li>is backed by *localStorage* instead of a remote server.</li>
-			<li>have a reference to the task model (3M exercise)).</li>
-			<li>have a method wich is able to filter down the list of all tasks that are finished.</li>
-			<li>have a method wich is able to filter down the list of all tasks that are still not finished.</li>
+			<li>Have a reference to a Backbone.Model.</li>
+			<li>Have a method wich is able to filter down the list of all tasks that are finished.</li>
+			<li>Have a method wich is able to filter down the list of all tasks that are still not finished.</li>
 		</ul></li>
 		<li>How should it work:
 		<pre><code>var tasks = new Tasks([
@@ -622,6 +622,9 @@ will refer to Backbone.Collection and since you can only call .apply on function
 
 (tasks.completed()).length // 2 
 (tasks.remaining()).length // 1</code></pre></li>
+<li>
+	Hints: see the <a href="http://backbonejs.org/#Collection-Underscore-Methods">Underscore Methods (28)</a>
+</li>
 	</ul></section>
 
 		<section><h2>Backbone Collection: Solution 2</h2>
