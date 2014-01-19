@@ -40,6 +40,12 @@
 	        });
 		});
 
+	    contactManager.vent.on('hideModal', function () {
+	        var modal = contactManager.modal.$el;
+
+	        modal.modal('hide');
+	    });
+
 		return contactManager;
 	});
 })();

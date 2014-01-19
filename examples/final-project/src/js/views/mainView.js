@@ -15,7 +15,28 @@
 
 			itemView: ItemUserView,
 
-			template: mainTemplate
+			template: mainTemplate,
+
+			events: {
+				'click .js-new': 'showModal'
+			},
+
+			showModal: function () {
+				/* TODO app should be removed from here*/
+				require([
+					'models/user',
+					'views/editView',
+					'app'
+				], function (ModelUser, EditView, app) {
+
+					var userModel = new ModelUser();
+
+					app.users.add(userModel);
+					app.vent.trigger('showModal', new EditView({
+						model: userModel
+					}));
+				});
+			}
 
 		});
 
