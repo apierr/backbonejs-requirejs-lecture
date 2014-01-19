@@ -1,8 +1,8 @@
 $(function () {
 
-	var myApp = {};
+	var app = {};
 
-	myApp.User = Backbone.Model.extend({
+	app.User = Backbone.Model.extend({
 
 		defaults: {
 			firstName: 'Unknown1',
@@ -12,26 +12,34 @@ $(function () {
 
 	});
 
-	myApp.Users = Backbone.Collection.extend({
+	app.Users = Backbone.Collection.extend({
 
 		localStorage: new Backbone.LocalStorage('contact-manager') 
 
 	});
 
-	myApp.UsersView = Backbone.View.extend({
+	app.UsersView = Backbone.View.extend({
 
 		el: '#contact-manager',
 
+		template: _.template("<h2>There are <%= usersLength %> users<h2>"),
+
 		initialize: function () {
+
 			this.render();
 		},
 
 		render: function () {
-			this.$el.html('ciao');
+			this.$el.html(this.template({ usersLength: app.users.length }));
 		}
 
 	});
 
-	new  myApp.UsersView();
+	app.users = new app.Users([
+		{firstName: 'antonio', lastName: 'pierro', number: '123456'},
+		{firstName: 'leonel', lastName: 'messi', number: '123457'}
+	]);
+
+	new  app.UsersView();
 
 });
