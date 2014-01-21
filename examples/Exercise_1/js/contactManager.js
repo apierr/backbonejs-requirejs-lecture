@@ -35,11 +35,27 @@ $(function () {
 
 	});
 
+	app.UsersViewMustache = Backbone.View.extend({
+
+		el: '#contact-manager',
+
+		initialize: function () {
+			this.template = Mustache.to_html("<h2>There are {{usersLength}} users<h2>", { usersLength: app.users.length });
+			this.render();
+		},
+
+		render: function () {
+			this.$el.html(this.template);
+		}
+
+	});
+
 	app.users = new app.Users([
 		{firstName: 'antonio', lastName: 'pierro', number: '123456'},
 		{firstName: 'leonel', lastName: 'messi', number: '123457'}
 	]);
 
-	new  app.UsersView();
+	// new  app.UsersView();
+	new  app.UsersViewMustache();
 
 });
