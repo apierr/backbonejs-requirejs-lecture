@@ -19,19 +19,22 @@ $(function () {
 
 	});
 
-	var ListView = Backbone.Marionette.CollectionView.extend({
+	var ListView = Marionette.CompositeView.extend({
 
 	  tagName: 'ul',
 
 	  itemView: SingleLink,
 
-	  el: '.container'
+	  el: '.container',
+
+	  template: _.template("The total numer is <%-total%>")
 
 	});
 
 
 	var listView = new ListView({
-	  collection: app.users
+	  collection: app.users,
+	  model: new Backbone.Model({total: app.users.length})
 	});
 
 	listView.render();
