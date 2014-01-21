@@ -1221,6 +1221,50 @@ DOMString is bound to the String type because both languages also use UTF-16 as 
 </section>
 
 <section>
+	<section>
+	<h2>GitHub 1/2</h2>
+	<ul>
+		<li>Sets up the necessary Git files:
+		<pre><code>
+cd ~/Sites
+mkdir DEV1Ecole
+cd DEV1Ecole
+git init
+git remote add origin git@github.com:DEV1Ecole/Backbone.git
+			</code></pre>
+		<li>Create, coommit and push to your repository:
+			<pre><code>
+touch votre_nom.txt
+git add votre_nom.txt
+git commit -m"mon première commit"
+git push origin master
+			</code></pre>
+		</li>
+
+		</li>
+	</ul>
+</section>
+<section>
+	<h2>GitHub 2/2</h2>
+	<ul>
+		<li>Delete a file from your repository:
+			<pre><code>
+rm votre_nom.txt
+git add votre_nom.txt
+git commit -m"delete mon première file"
+git push origin master
+			</code></pre>
+		</li>
+		<li>What if you realize that you don't want to keep your changes to the your_file.txt file? :
+		<pre><code>
+git checkout your_file.txt
+		</code></pre></li>
+	</ul>
+</section>
+</section>
+
+
+<section>
 	<h3>References</h3>
 	<p>
 		<ul>
@@ -1236,10 +1280,5 @@ DOMString is bound to the String type because both languages also use UTF-16 as 
 		</ul>
 	</p>
 </section>
-
-<section><h2>English to French</h2>
-<ul>
-	<li>By default</li>
-</ul>
 </section>
 
