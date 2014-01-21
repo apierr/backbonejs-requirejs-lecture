@@ -14,7 +14,12 @@
 			template: editTemplate,
 
 			events: {
-				'submit form': 'editUser'
+				'submit form': 'editUser',
+				'click .js-close': 'closeModal'
+			},
+
+			closeModal: function () {
+				app.vent.trigger('hideModal');
 			},
 
 			editUser: function (event) {

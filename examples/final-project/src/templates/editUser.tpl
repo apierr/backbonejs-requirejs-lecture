@@ -19,6 +19,5 @@
 	</form>
 </div>
 <div class="modal-footer">
-	<button class="btn">cancel</button>
-	<button class="btn-default">Ok</button>
+	<button class="btn js-close">Close</button>
 </div>

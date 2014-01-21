@@ -20,7 +20,12 @@
 			template: itemUserTemplate,
 
 			events: {
-				'click .js-edit': 'showModal'
+				'click .js-edit': 'showModal',
+				'click .js-delete': 'deleteItem'
+			},
+
+			deleteItem: function () {
+				this.model.destroy();
 			},
 
 			showModal: function () {
