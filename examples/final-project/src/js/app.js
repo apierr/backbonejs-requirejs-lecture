@@ -35,9 +35,7 @@
 	        var modal = contactManager.modal;
 
 	        modal.show(view);
-	        modal.$el.modal({
-				show: true
-	        });
+	        modal.$el.modal();
 		});
 
 	    contactManager.vent.on('hideModal', function () {

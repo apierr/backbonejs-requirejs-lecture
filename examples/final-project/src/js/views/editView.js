@@ -24,13 +24,11 @@
 
 			editUser: function (event) {
 				event.preventDefault();
-				var data = Backbone.Syphon.serialize(this);
-
-				this.model.set(data);
+				this.model.set(Backbone.Syphon.serialize(this));
+				app.users.add(this.model);
     			this.model.save();
 
 				app.vent.trigger('hideModal');
-
 			}
 
 		});

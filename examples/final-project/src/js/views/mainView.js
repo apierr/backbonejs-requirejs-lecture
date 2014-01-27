@@ -18,7 +18,21 @@
 			template: mainTemplate,
 
 			events: {
-				'click .js-new': 'showModal'
+				'click .js-new': 'showModal',
+				'submit form': 'sortUser'
+			},
+
+			sortUser: function (event) {
+				event.preventDefault();
+
+				var filter = $('.js-filter-criterion').val();
+				if(filter === '') {
+					return true;
+				}
+				this.collection.reset(this.collection.filter(function (model) {
+					return model.get('firstName').toLowerCase().indexOf(filter) != -1
+				}));
+
 			},
 
 			showModal: function () {
@@ -31,7 +45,6 @@
 
 					var userModel = new ModelUser();
 
-					app.users.add(userModel);
 					app.vent.trigger('showModal', new EditView({
 						model: userModel
 					}));
