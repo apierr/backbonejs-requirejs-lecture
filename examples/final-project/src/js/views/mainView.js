@@ -25,14 +25,7 @@
 			sortUser: function (event) {
 				event.preventDefault();
 
-				var filter = $('.js-filter-criterion').val();
-				if(filter === '') {
-					return true;
-				}
-				this.collection.reset(this.collection.filter(function (model) {
-					return model.get('firstName').toLowerCase().indexOf(filter) != -1
-				}));
-
+				this.collection.sortUser($('.js-filter-criterion').val());
 			},
 
 			showModal: function () {
