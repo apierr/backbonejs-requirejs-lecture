@@ -21,6 +21,16 @@
 	            }
 			},
 
+			sortUser: function (filter) {
+
+				if(filter === '') {
+					return true;
+				}
+				this.reset(this.filter(function (model) {
+					return model.get('firstName').toLowerCase().indexOf(filter) != -1
+				}));
+			},
+
 			loadFixture: function () {
 			    _.each(fixture, this.createModel);
 			},
