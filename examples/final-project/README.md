@@ -1,6 +1,6 @@
 ## Final project exercise
 
-In this exercise we will build a library application for managing users contacts using Backbone and Narionette.
+In this exercise we will build a library application for managing users contacts using Backbone and Marionette.
 
 This app allows you to add, view, edit, and update each user.
 
